@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<panels>
+	<mainnavigation>
+		<entry>
+			<relation>toMain</relation>
+			<href><![CDATA[examples/get.php?action=start]]></href>
+			<title>Start</title>
+		</entry>
+		<entry>
+			<relation>xml</relation>
+            <target>
+                <action><![CDATA[start]]></action>
+				<getData><![CDATA[file=calendar.xml]]></getData>
+            </target>
+			<title>Calendar</title>
+		</entry>
+		<entry>
+			<relation>xml</relation>
+            <target>
+                <action><![CDATA[start]]></action>
+				<getData><![CDATA[file=tabs.xml]]></getData>
+            </target>
+			<title>Tabs Kalender, Tabelle</title>
+		</entry>
+	</mainnavigation>
+	<!--
+		**********************************************
+			panel
+		**********************************************
+	-->
+	<panel width="full" height="200" title="Projekte">
+		<section>
+			<tabbedpane>
+				<tab title="Tab 1" name="tab_1">
+					<section>
+						<tabledata>
+							<rownavigation>
+								<entry>
+									<image>go</image>
+									<multiselect><table>katze</table></multiselect>
+									<linktarget>this</linktarget>
+									<relation htmlclass="active">toMain</relation>
+									<href><![CDATA[get.php?action=list&type=project]]></href>
+									<title>Projekte</title>
+								</entry>
+							</rownavigation>
+							<tablehead>
+								<cell sortable="false">11</cell>
+								<cell>2</cell>
+								<cell sortable="false" type="price">11</cell>
+								<cell>2</cell>
+							</tablehead>
+							<tablerows>
+								<row>
+									<cell>1</cell>
+									<cell>2</cell>
+									<cell>1</cell>
+									<cell>2</cell>
+								</row>
+								<row>
+									<tooltip><![CDATA[<span style="color:green">alles ok</span>]]></tooltip>
+
+			                        <cell title="o_name" ><![CDATA[]]></cell>
+			                        <cell title="gastgeber" ><![CDATA[]]></cell>
+			                        <cell title="umsatz" type="price" footerClass="alignRight nowrap" ><![CDATA[2130.00]]></cell>
+			                        <cell title="provision" type="price" footerClass="alignRight nowrap" ><![CDATA[426.00]]></cell>
+								</row>
+							</tablerows>
+							<tablefoot>
+			                        <cell title="o_name" ><![CDATA[]]></cell>
+			                        <cell title="gastgeber" ><![CDATA[]]></cell>
+			                        <cell title="umsatz" type="price" footerClass="alignRight nowrap" ><![CDATA[2130.00]]></cell>
+			                        <cell title="provision" type="price" footerClass="alignRight nowrap" ><![CDATA[426.00]]></cell>
+							</tablefoot>
+						</tabledata>
+					</section>
+				</tab>
+				<tab title="Tab 2" name="tab_2">
+					<section>
+						<form name="testform_panel">
+							<datagroup title="testformular_panel" name="datagroup_1_panel">
+								<field type="datetime"
+										fieldName="datumzeit_1_2"
+										title="Datum Zeitangabe">2011-01-25 10:09</field>
+								<field type="time"
+										fieldName="datumzeit_2_2"
+										title="Zeitangabe"></field>
+								<field type="date"
+										fieldName="datumzeit_3_2"
+										title="Datum"></field>
+
+							</datagroup>
+						</form>
+					</section>
+				</tab>
+			</tabbedpane>
+
+		</section>
+	</panel>
+
+</panels>

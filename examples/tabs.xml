@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<panels>
+        
+	<clearStickyMessages>yes</clearStickyMessages>
+   
+	<statuspanel>
+		<section name="statusSection">
+    
+			<htmlcontent>
+            <![CDATA[
+                <i>01.06.2011 10:42:13<br />logged in as John Doe<br />Admin</i>
+            ]]>
+			</htmlcontent>
+        
+		</section>
+	</statuspanel>
+    
+	<panel name="start_top" width="full" height="full" title="Startseite">
+                
+		<section name="start_tabbed">
+			<tabbedpane>
+				<tab name="tab_cal" title="Kalender">
+					<section name="ps_cal_filter">
+					</section>
+				</tab>
+                        
+				<tab name="tab_wdv" title="Wiedervorlage">
+                        
+					<section name="ps_wdv">
+                            
+						<tabledata type="notiz" name="t_notizen">
+                    
+							<rownavigation>
+            
+								<entry context="click">
+									<relation>xml</relation>
+									<target>
+										<action><![CDATA[edit_von_start]]>
+										</action>
+										<type><![CDATA[notiz]]>
+										</type>
+										<getData><![CDATA[&lastXML=start]]>
+										</getData>
+									</target>
+									<title><![CDATA[Notiz öffnen]]>
+									</title>
+            
+									<tooltip><![CDATA[diese Notiz öffnen]]>
+									</tooltip>
+            
+            
+        
+								</entry>
+        
+							</rownavigation>
+							<tablehead>
+								<cell title="art" type="icon" sortable="no" ><![CDATA[]]>
+								</cell>
+								<cell title="termin" type="icon" sortable="no" ><![CDATA[]]>
+								</cell>
+								<cell title="anhang" type="icon" sortable="no" ><![CDATA[]]>
+								</cell>
+								<cell title="bezug" type="icon" sortable="no" ><![CDATA[]]>
+								</cell>
+								<cell title="p_titel" ><![CDATA[Projekt]]>
+								</cell>
+								<cell title="von" ><![CDATA[Absender]]>
+								</cell>
+								<cell title="an" ><![CDATA[Empfänger]]>
+								</cell>
+								<cell title="n_zeit" ><![CDATA[Zeit]]>
+								</cell>
+								<cell title="n_betreff" ><![CDATA[Betreff]]>
+								</cell>
+								<cell title="wiedervorlage" ><![CDATA[Wiedervorlage]]>
+								</cell>
+							</tablehead>
+        
+							<tablerows>
+                    
+							</tablerows>
+                    
+						</tabledata>
+                    
+					</section>
+                        
+				</tab>
+                        
+			</tabbedpane>
+                
+		</section>
+                        
+	</panel>
+                
+</panels>

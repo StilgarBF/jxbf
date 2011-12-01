@@ -40,7 +40,6 @@ function site_init() {
 		c2 = (c2.length==1? '0'+c2 : c2);
 	var c3 = ((parseInt(uid.substr(-3,1))*26)+10).toString(16);
 		c3 = (c3.length==1? '0'+c3 : c3);
-	var color= '#'+c1+c2+c3;
 	
 	jQuery.tablesorter.addParser({
 	  id: "euroNumber",
@@ -59,11 +58,11 @@ function createButton(type, url){
 	var button = '';
 	button += '<a class="edit" rel="xml" href="'+url+'">';
 	if(type == 'new') {
-		button += '<img src="'+ jxbfRoot + 'project_files/img/icon/plus_16.png" alt="neu erstellen" />';
+		button += '<img src="'+ jxbfRoot + 'img/icon/plus_16.png" alt="neu erstellen" />';
 	} else if (type == 'edit') {
-		button += '<img src="'+ jxbfRoot + 'project_files/img/icon/clipboard_16.png" alt="bearbeiten" />';
+		button += '<img src="'+ jxbfRoot + 'img/icon/clipboard_16.png" alt="bearbeiten" />';
 	} else if (type == 'delete') {
-		button += '<img src="'+ jxbfRoot + 'project_files/img/icon/delete_16.png" alt="loeschen" />';
+		button += '<img src="'+ jxbfRoot + 'img/icon/delete_16.png" alt="loeschen" />';
 	}
 	button += '</a>';
 	return button;
@@ -74,105 +73,105 @@ function getIcon(value) {
 	var icon = '';
 	switch(value) {
 		case '1':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/icon/tick_16.png" title="Ja" />';
+			icon += '<img src="'+ jxbfRoot + 'img/icon/tick_16.png" title="Ja" />';
 			break;
 		case '0':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/icon/block_16.png" title="Nein" />';
+			icon += '<img src="'+ jxbfRoot + 'img/icon/block_16.png" title="Nein" />';
 			break;
 		case '':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/icon/block_16.png" title="Nein" />';
+			icon += '<img src="'+ jxbfRoot + 'img/icon/block_16.png" title="Nein" />';
 			break;
 		case 'yes':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/icon/tick_16.png" title="Ja" />';
+			icon += '<img src="'+ jxbfRoot + 'img/icon/tick_16.png" title="Ja" />';
 			break;
 		case 'no':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/icon/block_16.png" title="Nein" />';
+			icon += '<img src="'+ jxbfRoot + 'img/icon/block_16.png" title="Nein" />';
 			break;
 		case 'mail_to':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/icon/right_16.png" title="In" />';
+			icon += '<img src="'+ jxbfRoot + 'img/icon/right_16.png" title="In" />';
 			break;
 		case 'mail_from':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/icon/left_16.png" title="Out" />';
+			icon += '<img src="'+ jxbfRoot + 'img/icon/left_16.png" title="Out" />';
 			break;
 		case 'note':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/icon/document_16.png" title="Notiz" />';
+			icon += '<img src="'+ jxbfRoot + 'img/icon/document_16.png" title="Notiz" />';
 			break;
 		case 'maillog':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/icon/letter_16.png" title="Mail" />';
+			icon += '<img src="'+ jxbfRoot + 'img/icon/letter_16.png" title="Mail" />';
 			break;
 		case 'calllog':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/icon/bubble_16.png" title="Anruf" />';
+			icon += '<img src="'+ jxbfRoot + 'img/icon/bubble_16.png" title="Anruf" />';
 			break;
 		case 'typ_g':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/icon/label_16.png" title="Grundstueck" />';
+			icon += '<img src="'+ jxbfRoot + 'img/icon/label_16.png" title="Grundstueck" />';
 			break;
 		case 'typ_p':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/icon/user_16.png" title="Adresse" />';
+			icon += '<img src="'+ jxbfRoot + 'img/icon/user_16.png" title="Adresse" />';
 			break;
 		case 'typ_b':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/icon/user_16.png" title="Bearbeiter" />';
+			icon += '<img src="'+ jxbfRoot + 'img/icon/user_16.png" title="Bearbeiter" />';
 			break;
 		case 'typ_a':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/icon/user_16.png" title="Admin" />';
+			icon += '<img src="'+ jxbfRoot + 'img/icon/user_16.png" title="Admin" />';
 			break;
 		case 'application/pdf':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/fileicon2/icon_pdf.gif" title="pdf" />';
+			icon += '<img src="'+ jxbfRoot + 'img/fileicon2/icon_pdf.gif" title="pdf" />';
 			break;
 		case 'image/gif':
 		case 'image/jpeg':
 		case 'image/png':
 		case 'image/tiff':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/fileicon2/icon_image.gif" title="image" />';
+			icon += '<img src="'+ jxbfRoot + 'img/fileicon2/icon_image.gif" title="image" />';
 			break;
 		case 'text/plain':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/fileicon2/icon_txt.gif" title="text" />';
+			icon += '<img src="'+ jxbfRoot + 'img/fileicon2/icon_txt.gif" title="text" />';
 			break;
 		case 'application/msword':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/fileicon2/icon_doc.gif" title="doc" />';
+			icon += '<img src="'+ jxbfRoot + 'img/fileicon2/icon_doc.gif" title="doc" />';
 			break;
 		case 'application/msexcel':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/fileicon2/icon_xls.gif" title="xls" />';
+			icon += '<img src="'+ jxbfRoot + 'img/fileicon2/icon_xls.gif" title="xls" />';
 			break;
 		case 'directory':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/icon/folder_16.png" title="Ordner" />';
+			icon += '<img src="'+ jxbfRoot + 'img/icon/folder_16.png" title="Ordner" />';
 			break;
 		case 'attachment':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/icon/attachment.png" title="Anhang" />';
+			icon += '<img src="'+ jxbfRoot + 'img/icon/attachment.png" title="Anhang" />';
 			break;
 		case 'related':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/icon/related.png" title="Anhang" />';
+			icon += '<img src="'+ jxbfRoot + 'img/icon/related.png" title="Anhang" />';
 			break;
 
 		case 'backend':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/icon/gear_16.png" title="Backend" />';
+			icon += '<img src="'+ jxbfRoot + 'img/icon/gear_16.png" title="Backend" />';
 			break;
 		case 'website':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/icon/globe_16.png" title="Website" />';
+			icon += '<img src="'+ jxbfRoot + 'img/icon/globe_16.png" title="Website" />';
 			break;
 		case 'user':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/icon/user_16.png" title="Benutzer" />';
+			icon += '<img src="'+ jxbfRoot + 'img/icon/user_16.png" title="Benutzer" />';
 			break;
 
 		case 'angebot':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/icon/offer.gif" title="Angebot" />';
+			icon += '<img src="'+ jxbfRoot + 'img/icon/offer.gif" title="Angebot" />';
 			break;
 		case 'option':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/icon/option.gif" title="Option" />';
+			icon += '<img src="'+ jxbfRoot + 'img/icon/option.gif" title="Option" />';
 			break;
 		case 'best_option':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/icon/oreservation.gif" title="bestaetigte Option" />';
+			icon += '<img src="'+ jxbfRoot + 'img/icon/oreservation.gif" title="bestaetigte Option" />';
 			break;
 		case 'option abgelaufen':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/icon/option_expired.gif" title="Option abgelaufen" />';
+			icon += '<img src="'+ jxbfRoot + 'img/icon/option_expired.gif" title="Option abgelaufen" />';
 			break;
 		case 'reservierung':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/icon/reserv.gif" title="Reservierung" />';
+			icon += '<img src="'+ jxbfRoot + 'img/icon/reserv.gif" title="Reservierung" />';
 			break;
 		case 'sperrung':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/icon/na.gif" title="Sperrung" />';
+			icon += '<img src="'+ jxbfRoot + 'img/icon/na.gif" title="Sperrung" />';
 			break;
 		case 'blockierung':
-			icon += '<img src="'+ jxbfRoot + 'project_files/img/icon/blocked.gif" title="Blockierung" />';
+			icon += '<img src="'+ jxbfRoot + 'img/icon/blocked.gif" title="Blockierung" />';
 			break;
 	}
 
@@ -180,6 +179,9 @@ function getIcon(value) {
 }
 
 function setMessageStyle(xml) {
+
+	var growlImage = '';
+
 	if(xml.attr('type')== 'warning') {
 		jQuery.growl.settings.displayTimeout = 4000;
 		jQuery.growl.settings.noticeCss = {
@@ -190,7 +192,7 @@ function setMessageStyle(xml) {
 			borderColor:		'#DDD #000 #000 #DDD',
 			padding: 			'5px'
 		};
-		var growlImage = jxbfRoot + 'project_files/img/icon/warning_16.png';
+		growlImage = jxbfRoot + 'img/icon/warning_16.png';
 
 	} else if(xml.attr('type')== 'error') {
 		jQuery.growl.settings.displayTimeout = 7000;
@@ -202,7 +204,7 @@ function setMessageStyle(xml) {
 			borderColor:		'#DDD #000 #000 #DDD',
 			padding: 			'5px'
 		};
-		var growlImage = jxbfRoot + 'project_files/img/icon/stop_16.png';
+		growlImage = jxbfRoot + 'img/icon/stop_16.png';
 
 	} else {
 		jQuery.growl.settings.displayTimeout = 2000;
@@ -214,7 +216,7 @@ function setMessageStyle(xml) {
 			borderColor:		'#DDD #000 #000 #DDD',
 			padding: 			'5px'
 		};
-		var growlImage = jxbfRoot + 'project_files/img/icon/tick_16.png';
+		growlImage = jxbfRoot + 'img/icon/tick_16.png';
 	}
 
 	if(xml.attr('sticky')== 'yes') {
@@ -236,18 +238,24 @@ function setMessageStyle(xml) {
 }
 
 function formatted_date(input){
+
+	var formatted = '';
+
 	if(input != '') {
-		var formatted = input.substr(8,2)+'.'+input.substr(5,2)+'.'+input.substr(0,4);
+		formatted = input.substr(8,2)+'.'+input.substr(5,2)+'.'+input.substr(0,4);
 	} else {
-		var formatted = input;
+		formatted = input;
 	}
 	return formatted;
 }
 function formatted_datetime(input){
+
+	var formatted = '';
+
 	if(input != '') {
-		var formatted = input.substr(8,2)+'.'+input.substr(5,2)+'.'+input.substr(0,4)+' - '+input.substr(11,5)+' Uhr';
+		formatted = input.substr(8,2)+'.'+input.substr(5,2)+'.'+input.substr(0,4)+' - '+input.substr(11,5)+' Uhr';
 	} else {
-		var formatted = input;
+		formatted = input;
 	}
 	return formatted;
 }
@@ -306,7 +314,7 @@ jQuery(document).ready(function(){
 });
 
 
-var waitMessage = '<img style="margin-top:20px" src="'+ jxbfRoot + 'project_files/img/ajax-loader-white.gif" /><h1>Bitte warten...</h1>';
+var waitMessage = '<img style="margin-top:20px" src="'+ jxbfRoot + 'img/ajax-loader-white.gif" /><h1>Bitte warten...</h1>';
 var waitBackgroundColor = '#fff';
 var waitTextColor = '#000';
 

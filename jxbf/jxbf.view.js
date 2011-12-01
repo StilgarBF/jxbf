@@ -53,11 +53,12 @@ function parse_view(xml) {
 
 				var content		= jQuery(this).text();
 				var fieldtype = jQuery(this).attr('type');
+				var hideField;
 
 				if((jQuery(this).attr('hideEmpty') == 'yes') && (content == '')) {
-					var hideField = true;
+					hideField = true;
 				} else {
-					var hideField = false;
+					hideField = false;
 				}
 
 				if ((fieldtype != 'hidden') && (!hideField)) {

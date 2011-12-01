@@ -273,7 +273,7 @@ function parseXML(xml) {
 	// messages (growl)
 	if((jQuery(xml).find('clearStickyMessages').length > 0) && (jQuery(xml).find('clearStickyMessages').text() == 'yes')) {
 		jQuery('#growlDock .sticky a[rel=close]').click();
-	};
+	}
 	jQuery(xml).find('message').each(function(){
 
 		 parseMessage(jQuery(this));
@@ -459,7 +459,7 @@ function bindLive() {
 				var check = false;
 
 				if(jQuery(this).hasClass('confirmation')) {
-					var question="Soll diese Aktion wirklich gel�scht werden?";
+					var question="Soll diese Aktion wirklich gel&ouml;scht werden?";
 					if(jQuery(this).data('confirmMessage') != '') {
 						question=jQuery(this).data('confirmMessage');
 					}

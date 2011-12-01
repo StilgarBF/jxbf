@@ -246,11 +246,11 @@ function parse_form(xml) {
 
 				} else if (fieldtype == 'upload') {
 		// upload
-				html += '<input type="file" name="'+jQuery(this).attr('fieldName')+'[]" id="'+thisID+'" value="'+jQuery(this).find('value').text()+'"';
-				if(jQuery(this).attr('editable') == 'no') {
-						html += ' disabled="disabled"';
-					}
-				html += ' class="textInput multifile '+addFieldClass+'">';
+					html += '<input type="file" name="'+jQuery(this).attr('fieldName')+'[]" id="'+thisID+'" value="'+jQuery(this).find('value').text()+'"';
+					if(jQuery(this).attr('editable') == 'no') {
+							html += ' disabled="disabled"';
+						}
+					html += ' class="textInput multifile '+addFieldClass+'">';
 
 				} else if (fieldtype == 'password') {
 		// password
@@ -464,7 +464,7 @@ jxbf.bind('xmlparse.postparse', function bind_form_postparse(){
 
 	jQuery('input.multifile').MultiFile({
 		STRING:{
-			remove:'<img class="multiFile_remove" src="project_files/img/icon/delete_16.png" height="16" width="16" alt="x"/>'},
+			remove:'<img class="multiFile_remove" src="img/icon/delete_16.png" height="16" width="16" alt="x"/>'},
 		onFileAppend: function(element, value, master_element){
 			jQuery(element).parents('form').data('hasfiles',true);
 		}
@@ -517,7 +517,7 @@ function formSubmit(e, form) {
 			});
 
 			jQuery.blockUI({
-				message: '<img style="margin-top:20px" src="project_files/img/ajax-loader.gif" /><h1>Bitte warten...</h1>',
+				message: '<img style="margin-top:20px" src="img/ajax-loader.gif" /><h1>Bitte warten...</h1>',
 				css: { backgroundColor: '#658B8C', color: '#fff' }
 			});
 			form.submit();

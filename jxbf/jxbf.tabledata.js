@@ -213,10 +213,12 @@ function parse_tabledata(xml) {
 			// adding buttons and actions
 			if(rownavigation) {
 
+				var thisData;
+
 				if(thisType) {
-					var thisData	={id:	thisID, type: thisType};
+					thisData	={id:	thisID, type: thisType};
 				} else {
-					var thisData	={id:	thisID};
+					thisData	={id:	thisID};
 				}
 				html += '<td class="preventDefault">'+parse_navigation(rownavigation , {
 															data:		thisData,
