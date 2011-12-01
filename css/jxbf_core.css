@@ -1,0 +1,474 @@
+
+body {
+	background-color:	white;
+	font-family:		arial, verdana, sans-serif;
+	font-size:			12px;
+	color:				black;
+	margin:				0;
+	padding:			10px 10px 0 10px;
+}
+a:link,
+a:active,
+a:visited,
+a:hover {
+	color:				#00BB00;
+	text-decoration:	none;
+}
+img {
+	border: 			0px none;
+}
+.edit img {
+	margin-right:		5px;
+	margin-bottom:		5px;
+}
+#left_collumn {
+	float:				left;
+	width:				200px;
+}
+
+ul.navigation,
+ul.navigation ul {
+	list-style-type:	none;
+	margin:				0px;
+	padding:			0px;
+}
+ul.navigation span.confirmationMessage {
+	display:			none;
+}
+ul.navigation li img {
+	margin-right:		5px;
+}
+
+#left_collumn .left_panel {
+	border:				1px solid black;
+	padding:			10px;
+}
+
+#left_collumn #mainnavigation ul.navigation,
+#left_collumn #mainnavigation ul.navigation ul{
+	margin:				0px;
+}
+#left_collumn #mainnavigation ul.navigation ul{
+	margin:				0px 0px 8px 5px;
+}
+#left_collumn #mainnavigation ul.navigation li,
+#left_collumn #mainnavigation ul.navigation ul li {
+	padding:			2px 0px;
+}
+#left_collumn #mainnavigation ul.navigation li a {
+	display:			block;
+	padding:			2px 0px;
+}
+
+ul.horizontal {
+
+}
+ul.horizontal li {
+	float:				left;
+	margin-right:		15px;
+}
+ul.horizontal li a {
+	display:			block;
+	text-align:			center;
+}
+ul.horizontal li a img {}
+ul.horizontal li a span {
+	display:			block;
+}
+
+#main_collumn {
+	margin-left:		202px;
+}
+
+.clickable {
+	cursor:				pointer;
+}
+/*****************************************/
+/** Panel								**/
+/*****************************************/
+.fl_panel {
+	display: 		-moz-inline-stack;
+	display: 		inline-block;
+	vertical-align: top;
+	zoom: 			1;
+	*display: 		inline;
+}
+.fl_panel .panel_content {
+	min-height: 	20px;
+	_height: 		20px;
+	overflow:		auto;
+}
+.fl_panel .pc_h_auto {
+	min-height: 	inherit;
+	height:			auto;
+}
+.fl_panel .pc_h_half,
+.fl_panel .pc_h_full {
+	min-height: 	inherit;
+}
+.fourth {
+	width:			25%
+}
+.threefourth {
+	width:			75%
+}
+.third {
+	width:			33%;
+}
+.third34 {
+	width:			34%;
+}
+.twothird {
+	width:			67%;
+}
+.full {
+	width:			100%
+}
+.half{
+	width:			50%
+}
+
+.fl_panel .panel_inner {
+	margin-left:	10px;
+	margin-bottom:	10px;
+}
+
+.fl_panel .panel_inner .panel_head_inner {
+	height:				25px;
+	padding:			0px 10px;
+	font-weight:		bold;
+	line-height:		25px;
+}
+.fl_panel .panel_inner .panel_content {
+	padding:			10px;
+	border:				1px solid black;
+}
+
+/*****************************************/
+/** PanelTable							**/
+/*****************************************/
+
+table.jxbf_table  {
+	line-height:		18px;
+}
+table.jxbf_table  th {
+	text-align:			left;
+	font-weight:		bold;
+	padding-left:		11px;
+	background-image:	url(../img/tablehead.gif);
+	background-repeat:	no-repeat;
+	background-position: -7px center;
+}
+.overlay table.jxbf_table  th {
+	background-color:	#DDD;
+	border:				solid #AAA;
+	border-width:		1px 0px;
+	margin-bottom:		2px;
+}
+table.jxbf_table  td {
+	vertical-align:		top;
+}
+table.jxbf_table  th.headerSortDown {
+	background-image:	url(../img/tablehead_up.gif);
+}
+table.jxbf_table  th.headerSortUp {
+	background-image:	url(../img/tablehead_down.gif);
+}
+table.jxbf_table  th.nosort {
+	background-image:	none;
+}
+table.jxbf_table  tr.newNote td {
+	font-weight:		bold;
+}
+table.jxbf_table  td.hovered {
+	background-color:	#EEE;
+}
+table.jxbf_table  td.centered {
+	text-align:			center;
+}
+table.jxbf_table  td ul.navigation li {
+	display:			inline;
+}
+table.jxbf_table  tfoot td {
+	padding-top:		10px;
+}
+table.jxbf_table  tfoot td label {
+	cursor:				pointer;
+}
+table.jxbf_table  td .edit img {
+	margin-bottom:		0px;
+}
+
+/*****************************************/
+/** tabbed Pane							**/
+/*****************************************/
+ul.tabs { /* general settings */
+	text-align:			left;
+	margin:				1em 0 1em 0;
+	font:				bold 11px verdana, arial, sans-serif;
+	border-bottom:		1px solid #3466BF;
+	list-style-type:	none;
+	padding:			3px 10px 3px 10px;
+}
+
+ul.tabs li { /* do not change */
+	display:			inline;
+	margin-right:		5px;
+}
+
+ul.tabs li.tab_active {
+	border-bottom:		1px solid #3466BF;
+	background-color:	#fff;
+}
+
+ul.tabs li.tab_active a {
+	background-color:	#fff;
+	color:				#000;
+	position:			relative;
+	top:				1px;
+	padding-top:		4px;
+}
+
+ul.tabs li a {
+	padding:			3px 4px;
+	border:				1px solid #3466BF;
+	background-color:	#F9F9F9;
+	color:				#000;
+	margin-right:		0px;
+	text-decoration:	none;
+	border-bottom:		none;
+}
+
+ul.tabs a:hover {
+	background:			#fff;
+}
+
+div.hidden_tab {
+	display:			none;
+}
+
+/*****************************************/
+/** viewNote							**/
+/*****************************************/
+.viewData .block {
+	padding:			0px 10px;
+	margin-bottom:		5px;
+}
+
+.viewData .key,
+.editData .key {
+	float:				left;
+	font-weight:		bold;
+	width:				34%;
+}
+.viewData .value,
+.editData .value {
+	float:				left;
+	width:				66%;
+	position:			relative;
+}
+
+.editData .block {
+	padding:			5px 10px;
+	margin-bottom:		10px;
+}
+.editData label {
+	display:			block;
+	float:				left;
+	line-height:		22px;
+	width:				100px;
+}
+.editData label.error_label {
+	color:				#FF4444;
+}
+.editData .value label.error { /*genereted by validation plugin*/
+	width:				100%;
+}
+.editData .emphasis {
+	font-weight:		bold;
+}
+.editData input.textInput,
+.editData textarea.textInput,
+.editData select.selectInput {
+	border:				1px solid #DDD;
+	color:				black;
+	padding:			1px 0 1px 3px;
+	width:				100%;
+}
+.editData textarea.textInput {
+	height:				150px;
+}
+.editData textarea.superlong {
+	height:				400px;
+}
+.editData .value input.error,
+.editData .value textarea.error {
+	border:				1px solid red;
+}
+.editData div.error {
+	color:				red;
+	font-weight:		bold;
+}
+
+div.check {
+	float:				left;
+	padding-right:		20px;
+}
+.check label {
+	width:				auto;
+}
+fieldset {
+	margin-bottom:		10px;
+}
+
+.fl_panel fieldset {
+	border:				1px solid black;
+}
+.overlay fieldset {
+	border:				1px solid black;
+}
+.fl_panel hr {
+	background-color: 	black;
+}
+.dyn_suggest {
+	border:				1px solid #black;
+}
+.dyn_suggest ul {
+	list-style:			none;
+	margin:				5px;
+	padding:			0px;
+}
+.dyn_suggest ul li {
+	background-color:	white;
+	margin-bottom:		1px;
+	padding:			1px 5px;
+}
+.dyn_suggest ul li:hover {
+	background-color:	#EEE;
+	margin-bottom:		1px;
+}
+
+
+/*****************************************/
+/** FileManager							**/
+/*****************************************/
+ul.directory {
+	list-style:			none;
+	padding:			0px;
+}
+ul.directory li {
+	padding:			0px;
+	margin:				0px 0px 0px 15px;
+}
+ul.directory li img {
+	margin-right:		5px;
+}
+ul.directory li.dir span {
+	cursor:				pointer;
+}
+ul.directory li {
+	position:			relative;
+}
+ul.directory div.fileinfo {
+	display:			none;
+	position:			absolute;
+	top:	 			22px;
+	left:				30px;
+	background-color:	white;
+	color:				black;
+	border:				1px solid;
+	padding:			1px;
+	z-index:			5;
+}
+
+#tooltip_ {
+	position:			absolute;
+	z-index:			100;
+	border:				1px solid black;
+	background-color:	white;
+	padding:			5px;
+	width:				300px;
+}
+/*****************************************/
+/** overlay								**/
+/*****************************************/
+/* the overlayed element */
+div.overlay {
+
+    /* growing background image */
+    background-image:url(../img/overlay/white_big.png);
+
+    /* dimensions after the growing animation finishes  */
+    width:710px;
+    height:515px;
+
+    /* initially overlay is hidden */
+    display:none;
+
+    /* some padding to layout nested elements nicely  */
+    padding:55px 35px 55px 55px;
+
+    color:		black;
+}
+
+div.overlay div.ocWrapper {
+	height:		520px;
+	overflow:	auto;
+}
+
+/* default close button positioned on upper right corner */
+div.overlay div.close {
+    background-image:url(../img/overlay/close.png);
+    position:absolute;
+    right:5px;
+    top:5px;
+    cursor:pointer;
+    height:35px;
+    width:35px;
+}
+
+
+/* black */
+div.overlay.black {
+    background:url(../img/overlay/transparent.png) no-repeat !important;
+    color:#fff;
+}
+
+/* petrol */
+div.overlay.petrol {
+    background:url(../img/overlay/petrol.png) no-repeat !important;
+    color:#fff;
+}
+
+div.black h2, div.petrol h2 {
+    color:#ddd;
+}
+
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+
+.clearfix {
+	display: inline-block;
+}
+
+html[xmlns] .clearfix {
+	display: block;
+}
+
+* html .clearfix {
+	height: 1%;
+}
+#growlDock a {
+	font-weight:		bold;
+}
+/* datepicker */
+.AnyTime-pkr {
+	z-index:5000;
+}

@@ -1,0 +1,131 @@
+body {
+	background-color:	#adb3c2;
+	color:				#000;
+	background-image:	url(../img/mainbg.gif);
+	background-repeat:	repeat-x;
+}
+a:link,
+a:active,
+a:visited,
+a:hover {
+	color:				#030;
+}
+h1, h2, h3, h4 {
+	color: black;
+}
+
+#left_collumn .left_panel {
+	border-color:	#030;
+	background-image:	url(../img/bg.gif);
+	background-repeat:	repeat-y;
+	background-color:	#DFE0E2;
+	margin-bottom:		5px;
+	margin-top: 5px;
+}
+.fl_panel .panel_inner .panel_head {
+	background-image:	url(../img/service_bg.jpg);
+	background-repeat:	repeat-x;
+}
+.fl_panel .panel_inner .panel_head_inner {
+	color:				#FFF;
+}
+.fl_panel .panel_inner .panel_content {
+	border-top:			0px none;
+	border-color:		#030;
+	background-color:	#ddd;
+}
+#left_collumn #mainnavigation ul.navigation ul{
+	margin:				0px 0px 8px 35px;
+}
+/*****************************************/
+/** PanelTable							**/
+/*****************************************/
+
+.panel_content table {
+	background-color:	#eee;
+	padding:			3px;
+	border:				1px solid #050;
+}
+.panel_content table thead {
+
+	background-image:	url(../img/tablehead.jpg);
+	background-repeat:	repeat-x;
+	background-position: right center;
+	color:				#FFF;
+	line-height:		22px;
+}
+table thead th {
+	padding-left:		15px;
+	background-position:-2px center;
+	background-image:	url(../img/tablehead_updown.gif);
+}
+table th.headerSortDown {
+	background-image:	url(../img/tablehead_up.gif);
+}
+table th.headerSortUp {
+	background-image:	url(../img/tablehead_down.gif);
+}
+table th.nosort {
+	background-image:	none;
+}
+.panel_content table td.hovered {
+	background-color:	#fff;
+}
+.panel_content table tr td {
+	border-bottom:		1px solid silver;
+	padding:			2px
+}
+.fl_panel fieldset {
+	border-color:		#3466BF;
+	background-color:	#F9F9F9;
+}
+.fl_panel hr {
+	background-color: 	#B1C3C4;
+}
+.dyn_suggest {
+	border:				1px solid #DDDDDD;
+}
+.dyn_suggest ul li {
+	background-color:	#EEE;
+}
+.dyn_suggest ul li:hover {
+	background-color:	#CCC;
+}
+.viewData .block {
+	padding:			0px;
+}
+#growlDock h3 {
+	color:				white;
+}
+
+tr.highlighted {
+	font-weight:		bold;
+	background-color: 	#E9E9F9;
+}
+tr.dimmed {
+	color:				#BBB;
+}
+tr.dimmed .navigation img {
+	-moz-opacity:		.50;
+	-ms-filter:			"alpha(opacity=50)";
+	filter:				alpha(opacity=50);
+	opacity:			.50
+}
+div.check {
+	padding-right:		0px;
+}
+.check label			{
+	width:				175px;
+}
+.check input			{
+	margin-right:		15px;
+}
+
+
+.alignRight {
+    text-align: right;
+}
+
+.nowrap {
+    white-space:nowrap;
+}
