@@ -33,14 +33,6 @@
  */
 
 function site_init() {
-	var uid = jQuery('body').data('id').toString();
-	var c1 = ((parseInt(uid.substr(-1,1))*26)+10).toString(16);
-		c1 = (c1.length==1? '0'+c1 : c1);
-	var c2 = ((parseInt(uid.substr(-2,1))*26)+10).toString(16);
-		c2 = (c2.length==1? '0'+c2 : c2);
-	var c3 = ((parseInt(uid.substr(-3,1))*26)+10).toString(16);
-		c3 = (c3.length==1? '0'+c3 : c3);
-	
 	jQuery.tablesorter.addParser({
 	  id: "euroNumber",
 	  is: function(s) {

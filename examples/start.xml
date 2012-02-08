@@ -2,7 +2,7 @@
 <panels>
 	<mainnavigation>
 		<entry>
-			<relation>toMain</relation>
+			<relation>xml</relation>
 			<href><![CDATA[examples/get.php?action=start]]></href>
 			<title>Start</title>
 		</entry>

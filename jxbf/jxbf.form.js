@@ -464,7 +464,8 @@ jxbf.bind('xmlparse.postparse', function bind_form_postparse(){
 
 	jQuery('input.multifile').MultiFile({
 		STRING:{
-			remove:'<img class="multiFile_remove" src="img/icon/delete_16.png" height="16" width="16" alt="x"/>'},
+			remove:'<img class="multiFile_remove" src="'+ jxbfRoot + 'img/icon/delete_16.png" height="16" width="16" alt="x"/>'
+			},
 		onFileAppend: function(element, value, master_element){
 			jQuery(element).parents('form').data('hasfiles',true);
 		}
@@ -517,7 +518,7 @@ function formSubmit(e, form) {
 			});
 
 			jQuery.blockUI({
-				message: '<img style="margin-top:20px" src="img/ajax-loader.gif" /><h1>Bitte warten...</h1>',
+				message: '<img style="margin-top:20px" src="'+ jxbfRoot + 'img/ajax-loader.gif" /><h1>Bitte warten...</h1>',
 				css: { backgroundColor: '#658B8C', color: '#fff' }
 			});
 			form.submit();
