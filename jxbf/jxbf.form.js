@@ -99,7 +99,7 @@ function parse_form(xml) {
 
 			if (fieldtype == 'hidden') {
 
-				html += '<input type="hidden" name="'+jQuery(this).attr('fieldName')+'" value="'+jQuery(this).attr('value')+'" />';
+				html += '<input type="hidden" name="'+jQuery(this).attr('fieldName')+'" value="'+jQuery(this).attr('value').replace(/&/g, "&amp;").replace(/\"/g, "&quot;")+'" />';
 
 			} else {
 				html += '<div class="block clearfix">';

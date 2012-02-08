@@ -286,7 +286,7 @@ jxbf.bind('xmlparse.postparse', function bind_navigation_postparse(){
 			var colspan=jQuery('#'+e+' tbody td').length;
 
 			jQuery('#'+e+' thead tr').prepend('<th class="nosort flag"></th>');
-			jQuery('#'+e+' tfoot tr').prepend('<td class="nosort flag" colspan="2"></td>');
+			jQuery('#'+e+' tfoot tr:first').prepend('<td class="nosort flag" colspan="1"></td>');
 			jQuery('#'+e).append('<tfoot><tr><td class="preventDefault"><input type="checkbox" class="select_all" id="all_'+e+'"></td><td class="preventDefault" colspan="'+colspan+'"><label for="all_'+e+'">alle w&auml;hlen</label></td></tr></tfoot>');
 			jQuery('#'+e).wrap('<form></form>');
 		}

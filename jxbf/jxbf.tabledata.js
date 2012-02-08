@@ -251,6 +251,9 @@ function parse_tabledata(xml) {
 				var foot_class = jQuery(this).attr('footerClass') ? (' class="'+jQuery(this).attr('footerClass')+'"') : '';
 				html 	+= '<td'+foot_class+'>' + content + '</td>';
 			});
+			if (rownavigation) {
+				html += '<td></td>';
+			}
 			html += '<tr></tfoot>';
 		}
 
