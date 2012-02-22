@@ -76,7 +76,9 @@
 					<!-- datetime -->
 					<field title="datetime" fieldName="datetime" type="datetime" editable="yes"><![CDATA[2012-02-22 14:55]]></field>
 				</datagroup>
-
+				<buttons>
+					<button value="mysubmit"><![CDATA[Submit Form]]></button>
+				</buttons>
 			</form>
 		</section>
 

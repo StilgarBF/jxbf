@@ -293,7 +293,7 @@ function parse_form(xml) {
 
 	});
 
-	if (jQuery(xml).find('buttons button').length > 0) {
+	if (jQuery(xml).find('buttons').length > 0) {
 		jQuery(xml).find('buttons button').each(function(){
 			html += '<input type="submit" class="inputSubmit" name="'+jQuery(this).attr('value')+'" value="'+jQuery(this).text()+'" />';
 		});
