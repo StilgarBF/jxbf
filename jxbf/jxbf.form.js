@@ -67,6 +67,10 @@ function parse_form(xml) {
 				addLabelClass+=' error_label';
 			}
 
+			if(jQuery(this).attr('setFocus') == 'true') {
+				addFieldClass+=' setFocus';
+			}
+
 			// prepare validation
 
 			var thisID=jQuery(this).attr('fieldName').replace(/\[|\]/g,'_');
@@ -180,6 +184,7 @@ function parse_form(xml) {
 						html += '<label for="'+thisID+'_'+jQuery(this).attr('id')+'">'+jQuery(this).text()+'</label>';
 						html += '<input type="radio" ';
 							html += ((jQuery(this).attr('preselect') == 'yes') ? 'checked="checked" ' : ' ');
+							html += 'class="'+addFieldClass+'" ';
 							html += 'value="'+jQuery(this).attr('id')+'" ';
 							html += 'name="'+fieldname+'[]" ';
 							html += 'id="'	+thisID+'_'+jQuery(this).attr('id')+'">';
@@ -196,6 +201,7 @@ function parse_form(xml) {
 						html += '<label for="'+thisID+'_'+jQuery(this).attr('id')+'">'+jQuery(this).text()+'</label>';
 						html += '<input type="checkbox" ';
 							html += ((jQuery(this).attr('preselect') == 'yes') ? 'checked="checked" ' : ' ');
+							html += 'class="'+addFieldClass+'" ';
 							html += 'value="'+jQuery(this).attr('id')+'" ';
 							html += 'name="'+fieldname+'[]" ';
 							html += 'id="'	+thisID+'_'+jQuery(this).attr('id')+'">';
@@ -213,18 +219,19 @@ function parse_form(xml) {
 
 				} else if (fieldtype == 'date') {
 		// datepicker
-					html += '<input type="text" class="datepick textInput" id="'+thisID+'" name="'+jQuery(this).attr('fieldName')+'" value="'+jQuery(this).text()+'" />';
+					html += '<input type="text" class="datepick textInput '+addFieldClass+'" id="'+thisID+'" name="'+jQuery(this).attr('fieldName')+'" value="'+jQuery(this).text()+'" />';
 
 
 
 				} else if (fieldtype == 'time') {
-					html += '<input type="text" class="timepick textInput" id="'+thisID+'" name="'+jQuery(this).attr('fieldName')+'" value="'+jQuery(this).text()+'" />';
+		// timepicker
+					html += '<input type="text" class="timepick textInput '+addFieldClass+'" id="'+thisID+'" name="'+jQuery(this).attr('fieldName')+'" value="'+jQuery(this).text()+'" />';
 
 
 
 				} else if (fieldtype == 'datetime') {
 		// date / time
-					html += '<input type="text" id="'+thisID+'" class="textInput datetimepick" name="'+jQuery(this).attr('fieldName')+'" value="'+jQuery(this).text()+'" />';
+					html += '<input type="text" id="'+thisID+'" class="textInput datetimepick '+addFieldClass+'" name="'+jQuery(this).attr('fieldName')+'" value="'+jQuery(this).text()+'" />';
 
 
 
@@ -316,6 +323,7 @@ function parse_form(xml) {
 	return html;
 
 }
+
 // events for forms
 jxbf.bind('xmlparse.postparse', function bind_form_postparse(){
 	jQuery("form")
@@ -440,6 +448,8 @@ jxbf.bind('xmlparse.postparse', function bind_form_postparse(){
 			jQuery(element).parents('form').data('hasfiles',true);
 		}
 	});
+
+	jQuery('form .setFocus:first').focus();
 });
 
 /************************************

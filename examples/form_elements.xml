@@ -26,7 +26,7 @@
 				<datagroup title="standard inputs">
 
 					<!-- text -->
-					<field title="text" fieldName="username" type="text" editable="yes"><![CDATA[]]></field>
+					<field title="text" fieldName="username" type="text" editable="yes" setFocus="true" note="has focus after load!!"><![CDATA[]]></field>
 
 					<!-- password -->
 					<field title="password" fieldName="password" type="password" editable="yes"><![CDATA[]]></field>
