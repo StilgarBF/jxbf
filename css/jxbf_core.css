@@ -455,7 +455,7 @@ div.black h2, div.petrol h2 {
 }
 
 .clearfix {
-	display: inline-block;
+	/*display: inline-block;*/
 }
 
 html[xmlns] .clearfix {

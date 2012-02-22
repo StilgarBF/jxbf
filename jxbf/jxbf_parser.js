@@ -141,7 +141,7 @@ jQuery(document).ready(function(){
 		}
 
 		api.onBeforeClose(function(){
-			jQuery("#overlay .datetimepick, #overlay .timepick, #overlay .datepick").AnyTime_noPicker();
+			jQuery("#overlay .hasdatepicker").datepicker( "destroy" );
 			jQuery("#overlay div.ocWrapper")[0].innerHTML = '';
 		});
 
@@ -232,7 +232,7 @@ function parseXML(xml) {
 		panels.each(function(){
 			 view += parsePanel(jQuery(this));
 		});
-		jQuery("#main_collumn .datetimepick, #main_collumn .timepick, #main_collumn .datepick").AnyTime_noPicker();
+		jQuery("#main_collumn .hasdatepicker").datepicker( "destroy" );
 		document.getElementById("main_collumn").innerHTML = view;
 
 		jQuery('#main_collumn script').each(function(){

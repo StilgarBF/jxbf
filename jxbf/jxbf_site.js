@@ -289,48 +289,46 @@ function uiFunction_print(xml) {
 	return 'javascript:window.print()';
 }
 
-
-var zimmerplan = false;
-jQuery(document).ready(function(){
-
-	jQuery('#zp_link').bind('click',function(e){
-		e.preventDefault();
-		if(zimmerplan && (zimmerplan && !zimmerplan.closed)) {
-			zimmerplan.focus();
-		} else {
-			var href=jQuery(this).attr('href')+'&uid='+jQuery('body').data('id');
-			zimmerplan=window.open(href, 'zimmerplan', 'width=' + screen.width + ',height=' + screen.height + ',left=0,top=0,status=no,scrollbars=yes,resizable=yes,menubar=no,toolbar=no');
-			zimmerplan.focus();
-		}
-	});
-});
-
-
 var waitMessage = '<img style="margin-top:20px" src="'+ jxbfRoot + 'img/ajax-loader-white.gif" /><h1>Bitte warten...</h1>';
 var waitBackgroundColor = '#fff';
 var waitTextColor = '#000';
 
-
-function aplan_kalender_popup_dayclick(date, allDay, jsEvent, view) {
-	var $thisCal = jQuery(jsEvent.currentTarget).parents('.fullCalendar.fc');
-	if(view.name == 'agendaDay')
-	{
-                var startdate = jQuery.fullCalendar.formatDate(date, 'yyyy-MM-dd HH:mm');
-		window.opener.jQuery('#n_termin_start').val(startdate);
-
-                var enddateObj = new Date(Date.parse(date) + 1000*60*60);
-                var enddate = jQuery.fullCalendar.formatDate(enddateObj, 'yyyy-MM-dd HH:mm');
-                window.opener.jQuery('#n_termin_ende').val(enddate);
-
-                window.close();
-	}
-	else
-	{
-		$thisCal.fullCalendar('gotoDate', date);
-		$thisCal.fullCalendar('changeView', 'agendaDay');
-	}
-}
-
-function aplan_kalender_popup_eventclick(event, jsEvent, view) {
-    
-}
+/* set datepicker defaults (german) */
+jQuery(function($){
+	$.datepicker.regional['de'] = {
+		closeText: 'schließen',
+		prevText: '&#x3c;zurück',
+		nextText: 'Vor&#x3e;',
+		currentText: 'heute',
+		monthNames: ['Januar','Februar','März','April','Mai','Juni',
+		'Juli','August','September','Oktober','November','Dezember'],
+		monthNamesShort: ['Jan','Feb','Mär','Apr','Mai','Jun',
+		'Jul','Aug','Sep','Okt','Nov','Dez'],
+		dayNames: ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'],
+		dayNamesShort: ['So','Mo','Di','Mi','Do','Fr','Sa'],
+		dayNamesMin: ['So','Mo','Di','Mi','Do','Fr','Sa'],
+		weekHeader: 'Wo',
+		dateFormat: 'yy-mm-dd',
+		firstDay: 1,
+		isRTL: false,
+		showMonthAfterYear: false,
+		yearSuffix: ''};
+	$.datepicker.setDefaults($.datepicker.regional['de']);
+	
+	$.timepicker.regional['de'] = {
+		timeOnlyTitle: 'Zeit Wählen',
+		timeText: 'Zeit',
+		hourText: 'Stunde',
+		minuteText: 'Minute',
+		secondText: 'Sekunde',
+		millisecText: 'Millisekunde',
+		timezoneText: 'Zeitzone',
+		currentText: 'Jetzt',
+		closeText: 'Fertig',
+		timeFormat: 'hh:mm',
+		amNames: ['vorm.', 'AM', 'A'],
+		pmNames: ['nachm.', 'PM', 'P'],
+		ampm: false
+	};
+	$.timepicker.setDefaults($.timepicker.regional['de']);
+});

@@ -224,8 +224,6 @@ function parse_form(xml) {
 
 				} else if (fieldtype == 'datetime') {
 		// date / time
-					//html += '<input type="text" class="textInput datetimepick" id="dtp" />';
-					//html += '<input type="hidden" id="'+thisID+'" class="datetime" name="'+jQuery(this).attr('fieldName')+'" value="'+jQuery(this).text()+'" />';
 					html += '<input type="text" id="'+thisID+'" class="textInput datetimepick" name="'+jQuery(this).attr('fieldName')+'" value="'+jQuery(this).text()+'" />';
 
 
@@ -349,39 +347,11 @@ jxbf.bind('xmlparse.postparse', function bind_form_postparse(){
 		jQuery(this).val(value);
 	});
 
-   	$('.datepick').AnyTime_picker({
-   	 	format: '%Y-%m-%d',
-   	 	labelMonth: 'Monat',
-   	 	labelTitle: 'Datum',
-   	 	labelYear:	'Jahr',
-   	 	labelDayOfMonth: 'Tag',
-   	 	monthAbbreviations: ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'],
-   	 	dayAbbreviations: ['So','Mo','Di','Mi','Do','Fr','Sa'],
-   	 	firstDOW: 1,
-   	 	askSecond: false
-   	 });
+	$('.datepick').datepicker();
 
-   	 $('.datetimepick').AnyTime_picker({
-   	 	format: '%Y-%m-%d %H:%i',
-   	 	labelHour: 'Stunde',
-   	 	labelMinute: 'Minute',
-   	 	labelMonth: 'Monat',
-   	 	labelTitle: 'Datum und Zeit',
-   	 	labelYear:	'Jahr',
-   	 	labelDayOfMonth: 'Tag',
-   	 	monthAbbreviations: ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'],
-   	 	dayAbbreviations: ['So','Mo','Di','Mi','Do','Fr','Sa'],
-   	 	firstDOW: 1,
-   	 	askSecond: false
-   	 });
+	$('.datetimepick').datetimepicker();
 
-   	 $('.timepick').AnyTime_picker({
-   	 	format: '%H:%i',
-   	 	labelHour: 'Stunde',
-   	 	labelMinute: 'Minute',
-   	 	labelTitle: 'Zeit',
-   	 	askSecond: false
-   	 });
+	$('.timepick').timepicker();
 
    	 jQuery('.inputSuggest').each(function(){
 		var options = jQuery(this).siblings('input[type=hidden]').val().split('-|-');
@@ -481,8 +451,6 @@ function formSubmit(e, form) {
 	form.validate({ignore: "input"});
 
 	if(form.valid()){
-
-		$('.datetimepick, .timepick, .datepick').AnyTime_noPicker();
 
 		form.find('input[class*=decimal]').each(function(){
 
