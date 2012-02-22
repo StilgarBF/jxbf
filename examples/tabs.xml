@@ -1,37 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <panels>
-        
+
 	<clearStickyMessages>yes</clearStickyMessages>
-   
+
 	<statuspanel>
 		<section name="statusSection">
-    
+
 			<htmlcontent>
-            <![CDATA[
-                <i>01.06.2011 10:42:13<br />logged in as John Doe<br />Admin</i>
-            ]]>
+				<![CDATA[
+				<i>01.06.2011 10:42:13<br />logged in as John Doe<br />Admin</i><br / looking at a tabbed pane
+				]]>
 			</htmlcontent>
-        
+
 		</section>
 	</statuspanel>
-    
-	<panel name="start_top" width="full" height="full" title="Startseite">
-                
+
+	<panel name="start_top" width="full" height="full" title="tabs">
+
 		<section name="start_tabbed">
 			<tabbedpane>
-				<tab name="tab_cal" title="Kalender">
-					<section name="ps_cal_filter">
-					</section>
-				</tab>
-                        
+
 				<tab name="tab_wdv" title="Wiedervorlage">
-                        
+
 					<section name="ps_wdv">
-                            
+
 						<tabledata type="notiz" name="t_notizen">
-                    
+
 							<rownavigation>
-            
 								<entry context="click">
 									<relation>xml</relation>
 									<target>
@@ -44,52 +39,53 @@
 									</target>
 									<title><![CDATA[Notiz öffnen]]>
 									</title>
-            
+
 									<tooltip><![CDATA[diese Notiz öffnen]]>
 									</tooltip>
-            
-            
-        
 								</entry>
-        
 							</rownavigation>
+
 							<tablehead>
-								<cell title="art" type="icon" sortable="no" ><![CDATA[]]>
-								</cell>
-								<cell title="termin" type="icon" sortable="no" ><![CDATA[]]>
-								</cell>
-								<cell title="anhang" type="icon" sortable="no" ><![CDATA[]]>
-								</cell>
-								<cell title="bezug" type="icon" sortable="no" ><![CDATA[]]>
-								</cell>
-								<cell title="p_titel" ><![CDATA[Projekt]]>
-								</cell>
-								<cell title="von" ><![CDATA[Absender]]>
-								</cell>
-								<cell title="an" ><![CDATA[Empfänger]]>
-								</cell>
-								<cell title="n_zeit" ><![CDATA[Zeit]]>
-								</cell>
-								<cell title="n_betreff" ><![CDATA[Betreff]]>
-								</cell>
-								<cell title="wiedervorlage" ><![CDATA[Wiedervorlage]]>
-								</cell>
+								<cell title="art" type="icon" sortable="no" ><![CDATA[]]></cell>
+								<cell title="p_id" ><![CDATA[ID]]></cell>
+								<cell title="name" ><![CDATA[name]]></cell>
+								<cell title="lastname" ><![CDATA[lastname]]></cell>
+								<cell title="type" ><![CDATA[type]]></cell>
 							</tablehead>
-        
+
 							<tablerows>
-                    
+								<row id="user_1">
+									<tooltip>this is a tooltip for line 1</tooltip>
+									<cell>calllog</cell>
+									<cell>1</cell>
+									<cell>Klaus</cell>
+									<cell>Mustermann</cell>
+									<cell>Admin</cell>
+								</row>
+								<row id="user_2">
+									<tooltip>this is a tooltip for line 2</tooltip>
+									<cell>typ_b</cell>
+									<cell>2</cell>
+									<cell>Gabi</cell>
+									<cell>Noname</cell>
+									<cell>User</cell>
+								</row>
 							</tablerows>
-                    
+
 						</tabledata>
-                    
+
 					</section>
-                        
+
 				</tab>
-                        
+				<tab name="tab_cal" title="Kalender">
+					<section name="ps_cal_filter">
+					</section>
+				</tab>
+
 			</tabbedpane>
-                
+
 		</section>
-                        
+
 	</panel>
-                
+
 </panels>

@@ -65,17 +65,11 @@ function getIcon(value) {
 	var icon = '';
 	switch(value) {
 		case '1':
-			icon += '<img src="'+ jxbfRoot + 'img/icon/tick_16.png" title="Ja" />';
-			break;
-		case '0':
-			icon += '<img src="'+ jxbfRoot + 'img/icon/block_16.png" title="Nein" />';
-			break;
-		case '':
-			icon += '<img src="'+ jxbfRoot + 'img/icon/block_16.png" title="Nein" />';
-			break;
 		case 'yes':
 			icon += '<img src="'+ jxbfRoot + 'img/icon/tick_16.png" title="Ja" />';
 			break;
+		case '0':
+		case '':
 		case 'no':
 			icon += '<img src="'+ jxbfRoot + 'img/icon/block_16.png" title="Nein" />';
 			break;

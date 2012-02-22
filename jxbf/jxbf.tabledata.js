@@ -131,12 +131,15 @@ function parse_tabledata(xml) {
 		tabledata.find('tablerows > row').each(function(){
 
 			var thisID		= jQuery(this).attr('id') ? jQuery(this).attr('id') : '';
+			var classes 	= 'class="';
 
 			var tooltipEl	= jQuery(this).find('tooltip');
 
-			tooltipMetadata = false;
+			var dataStr		= ' ';
+
 			if(tooltipEl.length != 0) {
-				tooltipMetadata = "tooltip:'"+ escape(tooltipEl.text()) +"'";
+				dataStr		+= 'data-tooltip="'+ escape(tooltipEl.text()) +'" ';
+				classes 	+= 'toolTipRow ';
 			}
 
 			var thisType = jQuery(this).attr('type') ? jQuery(this).attr('type') : false;
@@ -147,28 +150,16 @@ function parse_tabledata(xml) {
 			}
 
 			var data = "metadata {";
-			var setComma = false;
 			if(typeMetadata) {
-				setComma = true;
 				data += typeMetadata;
 			}
-			if(tooltipMetadata) {
-				if(setComma) {	data += ", ";}
-				setComma = true;
-				data += tooltipMetadata;
-			}
-				data += "}";
+			data += "}";
 
-			var classes = 'class="';
 			var th_class = jQuery(this).attr('class');
 			if(String(th_class) != 'undefined') {
 				classes += th_class + ' ';
 			}
 			delete(th_class);
-
-			if(tooltipMetadata) {
-				classes += 'toolTipRow ';
-			}
 
 			if((rowClickAction == '') || data) {
 				if(rowClickAction != '') {
@@ -178,10 +169,9 @@ function parse_tabledata(xml) {
 					classes += data;
 				}
 			}
+			classes += '"';
 
-				classes += '"';
-
-			html += '<tr rel="#overlay" id="'+thisID+'" '+classes+'>';
+			html += '<tr rel="#overlay" id="'+thisID+'" '+classes+dataStr+'>';
 
 			jQuery(this).find('cell').each(function(index){
 				htmlclass='';
@@ -282,9 +272,7 @@ jxbf.bind('xmlparse.postparse', function bind_tabledata_postparse(){
 					jQuery(this).find('td').removeClass('hovered');
 				})
 			.mouseover(function bind_tr(){
-				//jQuery(this).unbind('mouseover');
 				jQuery(this).find('td:not(.preventDefault)')
-					//.unbind()														// remove old events
 					.addClass('clickable')
 					.bind('mouseenter',function(){
 							jQuery(this).parent().find('td').addClass('hovered');
@@ -295,35 +283,33 @@ jxbf.bind('xmlparse.postparse', function bind_tabledata_postparse(){
 			});
 
 	});
-	$("table:not(.tooltipBound)").each(function(){
-		$(this).addClass('tooltipBound');
-		$("tr.toolTipRow td", this).bind('mouseenter',
-			function(e){
-				//var content = jQuery(this).siblings('.tooltip').html();
-				var	content = unescape(jQuery(this).parents('tr').metadata().tooltip);
-				if(jQuery('#tooltip_').length == 0) {
-					jQuery('body').append('<div id="tooltip_"></div>');
-					jQuery('#tooltip_').css({position:'absolute', width:'300px', top:'100px', left:'100px'});
-				}
-				var tt = jQuery('#tooltip_');
-					tt.show();
-					tt.html(content);
-					tt_height = tt.height() + (parseInt(tt.css('padding-bottom'))*2) + (parseInt(tt.css('border-bottom-width'))*2);
-					tt_width = tt.width();
-			}).bind('mouseleave',
-				function(){
-					jQuery('#tooltip_').hide();
-			}).bind('mousemove',
-				function(e){
-					var win_height = jQuery(window).height();
-					var tt = jQuery('#tooltip_');
-					var x = e.pageX - (tt_width / 2);
-					var y = e.pageY + 5;
-					if(e.pageY > (win_height/2)) {
-						y = e.pageY - 5 - tt_height;
-					}
-					tt.css({top:y+'px', left:x+'px'});
-				}
-			);
+});
+
+jQuery(document).ready(function(){
+	/*
+	 * add eventdelegation for tooltip
+	 */
+	jQuery('#main_collumn')
+	.on('mouseenter', 'tr.toolTipRow td"', function() {
+		var	content = unescape(jQuery(this).parents('tr').data('tooltip'));
+		var $tooltip = jQuery('#tooltip_');
+		if($tooltip .length == 0) {
+			jQuery('body').append('<div id="tooltip_"></div>');
+			$tooltip  = jQuery('#tooltip_').css({position:'absolute', width:'300px', top:'100px', left:'100px'});
+		}
+		$tooltip.html(content).show();
+	})
+	.on('mouseleave', 'tr.toolTipRow td"', function() {
+		jQuery('#tooltip_').hide();
+	})
+	.on('mousemove', 'tr.toolTipRow td"', function(e) {
+		var win_height = jQuery(window).height();
+		var tt = jQuery('#tooltip_');
+		var x = e.pageX - (tt_width / 2);
+		var y = e.pageY + 5;
+		if(e.pageY > (win_height/2)) {
+			y = e.pageY - 5 - tt_height;
+		}
+		tt.css({top:y+'px', left:x+'px'});
 	});
-})
+});
