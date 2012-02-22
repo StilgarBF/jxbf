@@ -22,6 +22,14 @@
             </target>
 			<title>Tabs Kalender, Tabelle</title>
 		</entry>
+		<entry>
+			<relation>xml</relation>
+			<target>
+				<action><![CDATA[start]]></action>
+				<getData><![CDATA[file=form_elements.xml]]></getData>
+			</target>
+			<title>Formular</title>
+		</entry>
 	</mainnavigation>
 	<!--
 		**********************************************

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<panels>
+
+	<clearStickyMessages>yes</clearStickyMessages>
+
+	<statuspanel>
+		<section name="statusSection">
+
+			<htmlcontent>
+				<![CDATA[
+				<i>01.06.2011 10:42:13<br />logged in as John Doe<br />Admin</i>
+				]]>
+			</htmlcontent>
+
+		</section>
+	</statuspanel>
+
+	<panel name="start_top" width="full" height="full" title="Startseite">
+
+		<section name="formelements">
+			
+			<form>
+				<target>
+					<action>nan</action>
+				</target>
+				<datagroup title="standard inputs">
+
+					<!-- text -->
+					<field title="text" fieldName="username" type="text" editable="yes"><![CDATA[]]></field>
+
+					<!-- password -->
+					<field title="password" fieldName="password" type="password" editable="yes"><![CDATA[]]></field>
+
+					<!-- select -->
+					<field title="Select" fieldName="lager" type="select" editable="yes">
+						<options>
+							<option id="1" preselect="yes"><![CDATA[Option 1]]></option>
+							<option id="2"><![CDATA[Option 2]]></option>
+							<option id="3"><![CDATA[Option 3]]></option>
+						</options>
+						<value><![CDATA[hauptlager]]></value>
+					</field>
+
+					<!-- checkbox -->
+					<field title="checkbox" fieldName="checkbox" type="flag" editable="yes"></field>
+
+					<!-- checkbox - toggle-->
+					<field title="checkbox Toggle" fieldName="checkboxt" type="flagToggle" editable="yes" target="group2" note="toggles an element by id"><![CDATA[]]></field>
+
+					<!-- radiogroup -->
+					<field title="radiogroup" fieldName="radiogroup1" type="radios" editable="yes">
+						<options>
+							<option id="1" preselect="yes"><![CDATA[red 1]]></option>
+							<option id="2"><![CDATA[yellow 2]]></option>
+							<option id="3"><![CDATA[green 3]]></option>
+						</options>
+					</field>
+
+					<!-- textarea -->
+					<field title="textarea" fieldName="text" type="longtext" editable="yes"></field>
+
+				</datagroup>
+				
+				<!-- this will be toggled with the checkbox-toggle -->
+				<datagroup title="a toggle-section" name="group2">
+					<!-- checkbox -->
+					<field title="Checkbox3" fieldName="checkbox3" type="flag" editable="yes"><![CDATA[]]></field>
+				</datagroup>
+
+				<datagroup title="stecial inputs">
+
+					<!-- date -->
+					<!-- set your date and time format an language in jxbf-site.js search for "$.datepicker.regional" -->
+					<field title="date" fieldName="date" type="date" editable="yes"><![CDATA[2012-02-22]]></field>
+
+					<!-- datetime -->
+					<field title="datetime" fieldName="datetime" type="datetime" editable="yes"><![CDATA[2012-02-22 14:55]]></field>
+				</datagroup>
+
+			</form>
+		</section>
+
+	</panel>
+
+</panels>
