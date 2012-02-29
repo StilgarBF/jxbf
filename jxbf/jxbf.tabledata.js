@@ -290,11 +290,11 @@ jQuery(document).ready(function(){
 	 * add eventdelegation for tooltip
 	 */
 	jQuery('#main_collumn')
-	.on('mouseenter', 'tr.toolTipRow td:not(.preventDefault), .tooltip"', function
+	.on('mouseenter', 'tr.toolTipRow td:not(.preventDefault), .tooltip"', function () {
 		var content = '';
 		if(jQuery(this).data('tooltip') != undefined)
 		{
-			content = unescape(jQuery(this).parents('tr').data('tooltip'));
+			content = unescape(jQuery(this).data('tooltip'));
 		}
 		else
 		{
