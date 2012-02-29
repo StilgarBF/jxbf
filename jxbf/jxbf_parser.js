@@ -137,7 +137,6 @@ jQuery(document).ready(function(){
 		window.openOverlay = function() {
 			api.load();
 			jQuery('.ocWrapper')[0].scrollTop=0;
-			console.log('open');
 		}
 
 		api.onBeforeClose(function(){
@@ -384,7 +383,7 @@ function bindLive() {
 
 	jQuery('td:not(.preventDefault)')
 		.live('click',function(e){
-			if( (!$.browser.msie && e.button == 0) || ($.browser.msie &&  e.button == 1) ) {
+			if( e.which == 1) {
 					var click = jQuery.extend({}	,jQuery(this).parents('table').metadata().clickaction);
 						click.para = jQuery.extend(click.para	,jQuery(this).parents('tr').metadata().clickaction);
 
@@ -453,32 +452,32 @@ function bindLive() {
 	});
 
 	jQuery('a[rel=xml]').live('click', function(e){
-			if( (!$.browser.msie && e.button == 0) || ($.browser.msie &&  e.button == 1) ) {
-				e.preventDefault();
+		if( e.which == 1) {
+			e.preventDefault();
 
-				var check = false;
+			var check = false;
 
-				if(jQuery(this).hasClass('confirmation')) {
-					var question="Soll diese Aktion wirklich gel&ouml;scht werden?";
-					if(jQuery(this).data('confirmMessage') != '') {
-						question=jQuery(this).data('confirmMessage');
-					}
-					check = confirm(question);
-				} else {
-					check = true;
+			if(jQuery(this).hasClass('confirmation')) {
+				var question="Soll diese Aktion wirklich gel&ouml;scht werden?";
+				if(jQuery(this).data('confirmMessage') != '') {
+					question=jQuery(this).data('confirmMessage');
 				}
-
-				if(check) {
-
-					var add_data = false;
-					if(jQuery(this).is('[class*=multiselect]')) {
-						var target_id=jQuery(this).attr('class').replace(/^[\w\W]*?multiselect_([^ ]+)[\w\W]*$/,'$1');
-						add_data = jQuery('#'+target_id).parents('form').serialize();
-					}
-
-					XMLUrl(jQuery(this).attr('href'), add_data);
-				}
+				check = confirm(question);
+			} else {
+				check = true;
 			}
+
+			if(check) {
+
+				var add_data = false;
+				if(jQuery(this).is('[class*=multiselect]')) {
+					var target_id=jQuery(this).attr('class').replace(/^[\w\W]*?multiselect_([^ ]+)[\w\W]*$/,'$1');
+					add_data = jQuery('#'+target_id).parents('form').serialize();
+				}
+
+				XMLUrl(jQuery(this).attr('href'), add_data);
+			}
+		}
 	});
 
 }
