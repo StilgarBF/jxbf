@@ -290,8 +290,16 @@ jQuery(document).ready(function(){
 	 * add eventdelegation for tooltip
 	 */
 	jQuery('#main_collumn')
-	.on('mouseenter', 'tr.toolTipRow td"', function() {
-		var	content = unescape(jQuery(this).parents('tr').data('tooltip'));
+	.on('mouseenter', 'tr.toolTipRow td:not(.preventDefault), tooltip"', function
+		var content = '';
+		if(jQuery(this).data('tooltip') != undefined)
+		{
+			content = unescape(jQuery(this).parents('tr').data('tooltip'));
+		}
+		else
+		{
+			content = unescape(jQuery(this).parents('[data-tooltip]').data('tooltip'));
+		}
 		var $tooltip = jQuery('#tooltip_');
 		if($tooltip .length == 0) {
 			jQuery('body').append('<div id="tooltip_"></div>');
@@ -299,10 +307,10 @@ jQuery(document).ready(function(){
 		}
 		$tooltip.html(content).show();
 	})
-	.on('mouseleave', 'tr.toolTipRow td"', function() {
+	.on('mouseleave', 'tr.toolTipRow td:not(.preventDefault), tooltip"', function() {
 		jQuery('#tooltip_').hide();
 	})
-	.on('mousemove', 'tr.toolTipRow td"', function(e) {
+	.on('mousemove', 'tr.toolTipRow td:not(.preventDefault), tooltip"', function(e) {
 		var win_height = jQuery(window).height();
 		var tt = jQuery('#tooltip_');
 		var x = e.pageX - (tt_width / 2);
