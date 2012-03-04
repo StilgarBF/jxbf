@@ -204,7 +204,7 @@ jQuery(document).ready(function(){
 			left: 				'10px',
 			bottom: 			'30px',
 			width: 				'200px',
-			zIndex:				'1002'
+			zIndex:				'10002'
 		};
 		jQuery.growl.settings.noticeCss = {
 			opacity: 			.85,
