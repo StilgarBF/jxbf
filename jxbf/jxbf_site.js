@@ -46,118 +46,18 @@ function site_init() {
 	
 }
 
-function createButton(type, url){
-	var button = '';
-	button += '<a class="edit" rel="xml" href="'+url+'">';
-	if(type == 'new') {
-		button += '<img src="'+ jxbfRoot + 'img/icon/plus_16.png" alt="neu erstellen" />';
-	} else if (type == 'edit') {
-		button += '<img src="'+ jxbfRoot + 'img/icon/clipboard_16.png" alt="bearbeiten" />';
-	} else if (type == 'delete') {
-		button += '<img src="'+ jxbfRoot + 'img/icon/delete_16.png" alt="loeschen" />';
-	}
-	button += '</a>';
-	return button;
-}
-
 
 function getIcon(value) {
 	var icon = '';
 	switch(value) {
 		case '1':
 		case 'yes':
-			icon += '<img src="'+ jxbfRoot + 'img/icon/tick_16.png" title="Ja" />';
+			icon += '<img src="'+ jxbfRoot + 'icons/on.png" title="Ja" />';
 			break;
 		case '0':
 		case '':
 		case 'no':
-			icon += '<img src="'+ jxbfRoot + 'img/icon/block_16.png" title="Nein" />';
-			break;
-		case 'mail_to':
-			icon += '<img src="'+ jxbfRoot + 'img/icon/right_16.png" title="In" />';
-			break;
-		case 'mail_from':
-			icon += '<img src="'+ jxbfRoot + 'img/icon/left_16.png" title="Out" />';
-			break;
-		case 'note':
-			icon += '<img src="'+ jxbfRoot + 'img/icon/document_16.png" title="Notiz" />';
-			break;
-		case 'maillog':
-			icon += '<img src="'+ jxbfRoot + 'img/icon/letter_16.png" title="Mail" />';
-			break;
-		case 'calllog':
-			icon += '<img src="'+ jxbfRoot + 'img/icon/bubble_16.png" title="Anruf" />';
-			break;
-		case 'typ_g':
-			icon += '<img src="'+ jxbfRoot + 'img/icon/label_16.png" title="Grundstueck" />';
-			break;
-		case 'typ_p':
-			icon += '<img src="'+ jxbfRoot + 'img/icon/user_16.png" title="Adresse" />';
-			break;
-		case 'typ_b':
-			icon += '<img src="'+ jxbfRoot + 'img/icon/user_16.png" title="Bearbeiter" />';
-			break;
-		case 'typ_a':
-			icon += '<img src="'+ jxbfRoot + 'img/icon/user_16.png" title="Admin" />';
-			break;
-		case 'application/pdf':
-			icon += '<img src="'+ jxbfRoot + 'img/fileicon2/icon_pdf.gif" title="pdf" />';
-			break;
-		case 'image/gif':
-		case 'image/jpeg':
-		case 'image/png':
-		case 'image/tiff':
-			icon += '<img src="'+ jxbfRoot + 'img/fileicon2/icon_image.gif" title="image" />';
-			break;
-		case 'text/plain':
-			icon += '<img src="'+ jxbfRoot + 'img/fileicon2/icon_txt.gif" title="text" />';
-			break;
-		case 'application/msword':
-			icon += '<img src="'+ jxbfRoot + 'img/fileicon2/icon_doc.gif" title="doc" />';
-			break;
-		case 'application/msexcel':
-			icon += '<img src="'+ jxbfRoot + 'img/fileicon2/icon_xls.gif" title="xls" />';
-			break;
-		case 'directory':
-			icon += '<img src="'+ jxbfRoot + 'img/icon/folder_16.png" title="Ordner" />';
-			break;
-		case 'attachment':
-			icon += '<img src="'+ jxbfRoot + 'img/icon/attachment.png" title="Anhang" />';
-			break;
-		case 'related':
-			icon += '<img src="'+ jxbfRoot + 'img/icon/related.png" title="Anhang" />';
-			break;
-
-		case 'backend':
-			icon += '<img src="'+ jxbfRoot + 'img/icon/gear_16.png" title="Backend" />';
-			break;
-		case 'website':
-			icon += '<img src="'+ jxbfRoot + 'img/icon/globe_16.png" title="Website" />';
-			break;
-		case 'user':
-			icon += '<img src="'+ jxbfRoot + 'img/icon/user_16.png" title="Benutzer" />';
-			break;
-
-		case 'angebot':
-			icon += '<img src="'+ jxbfRoot + 'img/icon/offer.gif" title="Angebot" />';
-			break;
-		case 'option':
-			icon += '<img src="'+ jxbfRoot + 'img/icon/option.gif" title="Option" />';
-			break;
-		case 'best_option':
-			icon += '<img src="'+ jxbfRoot + 'img/icon/oreservation.gif" title="bestaetigte Option" />';
-			break;
-		case 'option abgelaufen':
-			icon += '<img src="'+ jxbfRoot + 'img/icon/option_expired.gif" title="Option abgelaufen" />';
-			break;
-		case 'reservierung':
-			icon += '<img src="'+ jxbfRoot + 'img/icon/reserv.gif" title="Reservierung" />';
-			break;
-		case 'sperrung':
-			icon += '<img src="'+ jxbfRoot + 'img/icon/na.gif" title="Sperrung" />';
-			break;
-		case 'blockierung':
-			icon += '<img src="'+ jxbfRoot + 'img/icon/blocked.gif" title="Blockierung" />';
+			icon += '<img src="'+ jxbfRoot + 'icons/off.png" title="Nein" />';
 			break;
 	}
 
@@ -178,7 +78,7 @@ function setMessageStyle(xml) {
 			borderColor:		'#DDD #000 #000 #DDD',
 			padding: 			'5px'
 		};
-		growlImage = jxbfRoot + 'img/icon/warning_16.png';
+		growlImage = jxbfRoot + 'icons/warning.png';
 
 	} else if(xml.attr('type')== 'error') {
 		jQuery.growl.settings.displayTimeout = 7000;
@@ -190,7 +90,7 @@ function setMessageStyle(xml) {
 			borderColor:		'#DDD #000 #000 #DDD',
 			padding: 			'5px'
 		};
-		growlImage = jxbfRoot + 'img/icon/stop_16.png';
+		growlImage = jxbfRoot + 'icons/error.png';
 
 	} else {
 		jQuery.growl.settings.displayTimeout = 2000;
@@ -202,7 +102,7 @@ function setMessageStyle(xml) {
 			borderColor:		'#DDD #000 #000 #DDD',
 			padding: 			'5px'
 		};
-		growlImage = jxbfRoot + 'img/icon/tick_16.png';
+		growlImage = jxbfRoot + 'icons/info.png';
 	}
 
 	if(xml.attr('sticky')== 'yes') {
@@ -325,4 +225,118 @@ jQuery(function($){
 		ampm: false
 	};
 	$.timepicker.setDefaults($.timepicker.regional['de']);
+});
+
+
+
+
+/********** likecms shop *********/
+
+function smSetNavi(n) {
+    jQuery('#mainnavigation ul li a').each(function() {
+        var $this = jQuery(this);
+        $this.removeClass('active');
+        if ($this.text() == n) {
+            $this.addClass('active');
+        }
+    });
+}
+
+
+function uiFunction_website() {
+    return 'javascript: w=window.open(\'likecms.php\', \'sm_website\'); w.focus();';
+}
+
+function uiFunction_ruecknahme_einlagern_click() {
+    return 'javascript: ruecknahme_einlagern();';
+}
+
+function uiFunction_dummy() {
+    return 'javascript:;';
+}
+
+
+
+jQuery(document).ready(function(){
+
+	/*
+	 * global tooltip
+	 */
+	jQuery('body')
+	.on('mouseenter', '.tooltipTrigger, tr.toolTipRow td:not(.preventDefault)', function() {
+		var content = jQuery(this).data('tooltip');
+                var ttShow = false;
+
+                if (
+                    typeof content == 'undefined'
+                    && (
+                        !(content = jQuery(this).parent().data('tooltip'))
+                        || (typeof content == 'undefined')
+                    )
+                ) { // tooltip via other element
+
+                    var ttSelector = jQuery(this).data('tooltipelement');
+                    if (typeof ttSelector == 'undefined') {
+                        // no tooltip
+                    }
+                    else {
+                        if (jQuery(ttSelector).length > 0) {
+                            content = jQuery(ttSelector).html();
+                            ttShow = true;
+                        }
+                    }
+                }
+                else { // tooltip via data-tooltip of trigger or parent
+                    content = unescape(content);
+                    ttShow = true;
+                }
+
+                if (ttShow) {
+                    var $tooltip = jQuery('#tooltip_');
+                    if($tooltip .length == 0) {
+			jQuery('body').append('<div id="tooltip_"></div>');
+			$tooltip  = jQuery('#tooltip_').css({position:'absolute', top:'-1000px', left:'-1000px'});
+                    }
+                    $tooltip.html(content).show();
+                }
+	})
+	.on('mouseleave', '.tooltipTrigger, tr.toolTipRow td:not(.preventDefault)', function() {
+		jQuery('#tooltip_').hide();
+	})
+	.on('mousemove', '.tooltipTrigger, tr.toolTipRow td:not(.preventDefault)', function(e) {
+		var win_height = jQuery(window).height();
+		var win_width = jQuery(window).width();
+                var tt_height = jQuery('#tooltip_').height();
+                var tt_width = jQuery('#tooltip_').width();
+
+		var tt = jQuery('#tooltip_');
+
+                var x;
+                var y;
+
+                if (e.pageX <= (win_width/2)) { // nach rechts
+                    x = e.pageX + 20;
+                }
+                else { // nach links
+                    x = e.pageX - 40 - tt_width;
+                }
+
+                if (e.pageY <= (win_height/2 - tt_height/2)) { // nach unten
+                    y = e.pageY + 20;
+                }
+                else if (e.pageY <= (win_height/2 + tt_height/2)) { // mittig
+                    y = e.pageY - (tt_height/2);
+                }
+                else { // noch oben
+                    y = e.pageY - 40 - tt_height;
+                }
+
+                if (y <= 10 || (y + tt_height) > win_height) {
+                    y = 10;
+                }
+
+		tt.css({top:y+'px', left:x+'px'});
+	});
+
+
 });

@@ -71,6 +71,10 @@ function parse_form(xml) {
 				addFieldClass+=' setFocus';
 			}
 
+			if(jQuery(this).attr('class')) {
+				addFieldClass+=' '+jQuery(this).attr('class');
+			}
+
 			// prepare validation
 
 			var thisID=jQuery(this).attr('fieldName').replace(/\[|\]/g,'_');

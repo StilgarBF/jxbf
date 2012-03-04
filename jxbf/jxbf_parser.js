@@ -53,7 +53,7 @@ jQuery(document).ready(function(){
 		.ajaxStart(function(e, xhr, settings){
 						jQuery.blockUI({
 							message: waitMessage,
-							css: { backgroundColor: waitBackgroundColor, color: waitTextColor },
+							css: {backgroundColor: waitBackgroundColor, color: waitTextColor},
 							fadeOut:  0
 						});
 						$('#tooltip_').remove();
@@ -120,6 +120,8 @@ jQuery(document).ready(function(){
 		}); // end initial ajax
 
 		var api = jQuery("#overlay").overlay({
+                                                            top: 'center',
+                                                            left: 'center',
 									api:true,
 									closeOnClick: false,
 									mask: {
@@ -134,9 +136,56 @@ jQuery(document).ready(function(){
 								    }
 								});
 		// define function that opens the overlay
-		window.openOverlay = function() {
+		window.openOverlay = function(w, h) {
+                    
+                        var full_width = jQuery(window).width() - 100;
+                        var full_height = jQuery(window).height() - 130;
+                        
+                        
+                        if (w == 'full') {
+                            w = full_width;
+                        }
+                        else if ( (w = parseInt(w)) && !isNaN(w)) {
+                            if (w > full_width ) {
+                                w = full_width;
+                            }
+                        }
+                        else {
+                            w = 700;
+                        }
+
+                        jQuery('#overlay').width(w);
+
+
+
+                        if (h == 'full') {
+                            h = full_height;
+                        }
+                        else if ( (h = parseInt(h)) && !isNaN(h)) {
+                            if (h > full_height ) {
+                                h = full_height;
+                            }
+                        }
+                        else {
+                            h = 550;
+                        }
+
+                        jQuery('.ocWrapper').height(h);
+                        
+                        
+                        if (api.isOpened()) { // neu positionieren, da neuer inhalt
+                            
+                            var o_l = Math.round( jQuery(window).width()/2 - jQuery('#overlay').width()/2);
+                            var o_t = Math.round( jQuery(window).height()/2 - jQuery('#overlay').height()/2);
+                            
+                            jQuery('#overlay').css({left: o_l + 'px', top: o_t + 'px'});
+                        }
+                            
+                        
 			api.load();
 			jQuery('.ocWrapper')[0].scrollTop=0;
+// bastel remove
+//			console.log('open');
 		}
 
 		api.onBeforeClose(function(){
@@ -245,6 +294,8 @@ function parseXML(xml) {
 	view = '';
 
 	if(jQuery(xml).find('overlay').length > 0) {
+            
+            
 
 		var overlay = jQuery(xml).find('overlay')[0];
 
@@ -260,7 +311,8 @@ function parseXML(xml) {
 
 		//jQuery("#overlay div.ocWrapper").html('').html(view);
 		jQuery("#overlay div.ocWrapper")[0].innerHTML = view;
-		openOverlay();
+                
+		openOverlay(jQuery(overlay).attr('width'), jQuery(overlay).attr('height'));
 		jQuery('#overlay div.ocWrapper script').each(function(){
 			eval( jQuery(this).text() );
 		});
@@ -313,8 +365,14 @@ function parsePanel(xml) {
 		view		+= '<div class="fl_panel p_w_calc {W:'+width+'}" id="'+pan_id+'" '+((state == 'hidden')?'style="display:none;"':'')+'>';
 	}
 
+// bastel change start, panel navigation
+	view	+='<div class="panel_inner"><div class="panel_head"><div class="panel_head_inner">'+title+'</div>';
+	jQuery(xml).children('panelnavigation').each(function(){
+		view += parse_navigation( navigation2Object(jQuery(this)) );
+	});
+        view    +='</div>';
+// bastel change end
 
-	view	+='<div class="panel_inner"><div class="panel_head"><div class="panel_head_inner">'+title+'</div></div>';
 
 	if (String(parseInt(height)) != height) { 	// string like half, full, third ..
 		view		+= '<div class="panel_content pc_h_'+height+'">';
@@ -383,7 +441,7 @@ function bindLive() {
 
 	jQuery('td:not(.preventDefault)')
 		.live('click',function(e){
-			if( e.which == 1) {
+//			if( (!$.browser.msie && e.button == 0) || ($.browser.msie &&  e.button == 1) ) {
 					var click = jQuery.extend({}	,jQuery(this).parents('table').metadata().clickaction);
 						click.para = jQuery.extend(click.para	,jQuery(this).parents('tr').metadata().clickaction);
 
@@ -403,7 +461,7 @@ function bindLive() {
 					} else if(click.linkTarget) {
 						window.open(buildURL(click),click.linkTarget);
 					}
-			}
+//			}
 
 			});
 
@@ -452,32 +510,32 @@ function bindLive() {
 	});
 
 	jQuery('a[rel=xml]').live('click', function(e){
-		if( e.which == 1) {
-			e.preventDefault();
+			if( (!$.browser.msie && e.button == 0) || ($.browser.msie &&  e.button == 1) ) {
+				e.preventDefault();
 
-			var check = false;
+				var check = false;
 
-			if(jQuery(this).hasClass('confirmation')) {
-				var question="Soll diese Aktion wirklich gel&ouml;scht werden?";
-				if(jQuery(this).data('confirmMessage') != '') {
-					question=jQuery(this).data('confirmMessage');
-				}
-				check = confirm(question);
-			} else {
-				check = true;
-			}
-
-			if(check) {
-
-				var add_data = false;
-				if(jQuery(this).is('[class*=multiselect]')) {
-					var target_id=jQuery(this).attr('class').replace(/^[\w\W]*?multiselect_([^ ]+)[\w\W]*$/,'$1');
-					add_data = jQuery('#'+target_id).parents('form').serialize();
+				if(jQuery(this).hasClass('confirmation')) {
+					var question="Soll diese Aktion wirklich gel&ouml;scht werden?";
+					if(jQuery(this).data('confirmMessage') != '') {
+						question=jQuery(this).data('confirmMessage');
+					}
+					check = confirm(question);
+				} else {
+					check = true;
 				}
 
-				XMLUrl(jQuery(this).attr('href'), add_data);
+				if(check) {
+
+					var add_data = false;
+					if(jQuery(this).is('[class*=multiselect]')) {
+						var target_id=jQuery(this).attr('class').replace(/^[\w\W]*?multiselect_([^ ]+)[\w\W]*$/,'$1');
+						add_data = jQuery('#'+target_id).parents('form').serialize();
+					}
+
+					XMLUrl(jQuery(this).attr('href'), add_data);
+				}
 			}
-		}
 	});
 
 }
@@ -498,7 +556,9 @@ function bindEvents(){
 /* set size of panels					 */
 /*****************************************/
 var space_around_panel = 0;
-var additionalSpace = 2;  // gegen rundungsfehler
+
+// bastel change, wegen neuem layout
+var additionalSpace = 5;  // gegen rundungsfehler
 function setPanelHeight() {
 	// calculate dif betw. inner and outer pannel size
 	if( !space_around_panel) {
@@ -510,9 +570,12 @@ function setPanelHeight() {
 		space_around_panel += parseInt(jQuery('.panel_inner', first_panel).css('margin-bottom'));
 	}
 
+// bastel add, - jQuery('.fl_panel:first').position().top  - wegen panel oben
+
 	var win_height = jQuery(window).height()
 						- ( parseInt(jQuery('body').css('padding-top')) + parseInt(jQuery('body').css('padding-bottom')) )
-						- additionalSpace;
+						- additionalSpace
+                                                - jQuery('.fl_panel:first').position().top;
 		win_height = parseInt(win_height);
 
 	var win_width = parseInt(jQuery('#main_collumn').width());

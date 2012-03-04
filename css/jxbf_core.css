@@ -1,3 +1,10 @@
+/*
+ *
+ * Javascript XML Backend Framework
+ *
+ * Main CSS
+ *
+ */
 
 body {
 	background-color:	white;
@@ -148,10 +155,10 @@ ul.horizontal li a span {
 /** PanelTable							**/
 /*****************************************/
 
-table.jxbf_table  {
+table {
 	line-height:		18px;
 }
-table.jxbf_table  th {
+table th {
 	text-align:			left;
 	font-weight:		bold;
 	padding-left:		11px;
@@ -159,43 +166,43 @@ table.jxbf_table  th {
 	background-repeat:	no-repeat;
 	background-position: -7px center;
 }
-.overlay table.jxbf_table  th {
+.overlay table th {
 	background-color:	#DDD;
 	border:				solid #AAA;
 	border-width:		1px 0px;
 	margin-bottom:		2px;
 }
-table.jxbf_table  td {
+table td {
 	vertical-align:		top;
 }
-table.jxbf_table  th.headerSortDown {
+table th.headerSortDown {
 	background-image:	url(../img/tablehead_up.gif);
 }
-table.jxbf_table  th.headerSortUp {
+table th.headerSortUp {
 	background-image:	url(../img/tablehead_down.gif);
 }
-table.jxbf_table  th.nosort {
+table th.nosort {
 	background-image:	none;
 }
-table.jxbf_table  tr.newNote td {
+table tr.newNote td {
 	font-weight:		bold;
 }
-table.jxbf_table  td.hovered {
+table td.hovered {
 	background-color:	#EEE;
 }
-table.jxbf_table  td.centered {
+table td.centered {
 	text-align:			center;
 }
-table.jxbf_table  td ul.navigation li {
+table td ul.navigation li {
 	display:			inline;
 }
-table.jxbf_table  tfoot td {
+table tfoot td {
 	padding-top:		10px;
 }
-table.jxbf_table  tfoot td label {
+table tfoot td label {
 	cursor:				pointer;
 }
-table.jxbf_table  td .edit img {
+table td .edit img {
 	margin-bottom:		0px;
 }
 
@@ -206,7 +213,7 @@ ul.tabs { /* general settings */
 	text-align:			left;
 	margin:				1em 0 1em 0;
 	font:				bold 11px verdana, arial, sans-serif;
-	border-bottom:		1px solid #3466BF;
+	border-bottom:		1px solid darkred;
 	list-style-type:	none;
 	padding:			3px 10px 3px 10px;
 }
@@ -217,7 +224,7 @@ ul.tabs li { /* do not change */
 }
 
 ul.tabs li.tab_active {
-	border-bottom:		1px solid #3466BF;
+	border-bottom:		1px solid darkred;
 	background-color:	#fff;
 }
 
@@ -227,12 +234,13 @@ ul.tabs li.tab_active a {
 	position:			relative;
 	top:				1px;
 	padding-top:		4px;
+        font-size: 1.2em;
 }
 
 ul.tabs li a {
 	padding:			3px 4px;
-	border:				1px solid #3466BF;
-	background-color:	#F9F9F9;
+	border:				1px solid darkred;
+	background-color:	#E9E9E9;
 	color:				#000;
 	margin-right:		0px;
 	text-decoration:	none;
@@ -385,7 +393,7 @@ ul.directory div.fileinfo {
 	position:			absolute;
 	z-index:			100;
 	border:				1px solid black;
-	background-color:	white;
+	background-color:               white;
 	padding:			5px;
 	width:				300px;
 }
@@ -417,7 +425,7 @@ div.overlay div.ocWrapper {
 }
 
 /* default close button positioned on upper right corner */
-div.overlay div.close {
+div.overlay a.close {
     background-image:url(../img/overlay/close.png);
     position:absolute;
     right:5px;
@@ -455,7 +463,7 @@ div.black h2, div.petrol h2 {
 }
 
 .clearfix {
-	/*display: inline-block;*/
+	display: inline-block;
 }
 
 html[xmlns] .clearfix {

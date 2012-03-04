@@ -285,31 +285,5 @@ jxbf.bind('xmlparse.postparse', function bind_tabledata_postparse(){
 	});
 });
 
-jQuery(document).ready(function(){
-	/*
-	 * add eventdelegation for tooltip
-	 */
-	jQuery('#main_collumn')
-	.on('mouseenter', 'tr.toolTipRow td"', function() {
-		var	content = unescape(jQuery(this).parents('tr').data('tooltip'));
-		var $tooltip = jQuery('#tooltip_');
-		if($tooltip .length == 0) {
-			jQuery('body').append('<div id="tooltip_"></div>');
-			$tooltip  = jQuery('#tooltip_').css({position:'absolute', width:'300px', top:'100px', left:'100px'});
-		}
-		$tooltip.html(content).show();
-	})
-	.on('mouseleave', 'tr.toolTipRow td"', function() {
-		jQuery('#tooltip_').hide();
-	})
-	.on('mousemove', 'tr.toolTipRow td"', function(e) {
-		var win_height = jQuery(window).height();
-		var tt = jQuery('#tooltip_');
-		var x = e.pageX - (tt_width / 2);
-		var y = e.pageY + 5;
-		if(e.pageY > (win_height/2)) {
-			y = e.pageY - 5 - tt_height;
-		}
-		tt.css({top:y+'px', left:x+'px'});
-	});
-});
+
+// bastel, removed tooltip
