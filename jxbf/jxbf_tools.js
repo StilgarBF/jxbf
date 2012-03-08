@@ -34,16 +34,16 @@
 
 function site_init() {
 	jQuery.tablesorter.addParser({
-	  id: "euroNumber",
-	  is: function(s) {
-		return /^\d+,\d+ \u20AC$/.test(s);
-	  },
-	  format: function(s) {
-		return jQuery.tablesorter.formatInt( s.replace(/[, \u20AC]/g,'') );
-	  },
-	  type: "numeric"
+		id: "euroNumber",
+		is: function(s) {
+			return /^\d+,\d+ \u20AC$/.test(s);
+		},
+		format: function(s) {
+			return jQuery.tablesorter.formatInt( s.replace(/[, \u20AC]/g,'') );
+		},
+		type: "numeric"
 	});
-	
+
 }
 
 
@@ -52,18 +52,19 @@ function getIcon(value) {
 	switch(value) {
 		case '1':
 		case 'yes':
-			icon += '<img src="'+ jxbfRoot + 'icons/on.png" title="Ja" />';
+			icon += '<img src="'+ jxbfRoot + 'img/icons/on.png" title="Ja" />';
 			break;
 		case '0':
 		case '':
 		case 'no':
-			icon += '<img src="'+ jxbfRoot + 'icons/off.png" title="Nein" />';
+			icon += '<img src="'+ jxbfRoot + 'img/icons/off.png" title="Nein" />';
 			break;
 	}
 
 	return icon;
 }
 
+/* style-setter for jquery.growl */
 function setMessageStyle(xml) {
 
 	var growlImage = '';
@@ -108,21 +109,24 @@ function setMessageStyle(xml) {
 	if(xml.attr('sticky')== 'yes') {
 		jQuery.growl.settings.displayTimeout = 0;
 		jQuery.growl.settings.noticeTemplate =
-			'<div class="notice sticky">' +
-			' <h3 style="margin-top: 15px; "><img style="position:relative; top:2px; margin-right:10px;" src="%image%" /><a rel="close">%title%</a></h3>' +
-			' <p>%message%</p>' +
-			'</div>';
+		'<div class="notice sticky">' +
+		' <h3 style="margin-top: 15px; "><img style="position:relative; top:2px; margin-right:10px;" src="%image%" /><a rel="close">%title%</a></h3>' +
+		' <p>%message%</p>' +
+		'</div>';
 	} else {
 		jQuery.growl.settings.noticeTemplate =
-			'<div class="notice">' +
-			' <h3 style="margin-top: 15px; "><img style="position:relative; top:2px; margin-right:10px;" src="%image%" /><a rel="close">%title%</a></h3>' +
-			' <p>%message%</p>' +
-			'</div>';
+		'<div class="notice">' +
+		' <h3 style="margin-top: 15px; "><img style="position:relative; top:2px; margin-right:10px;" src="%image%" /><a rel="close">%title%</a></h3>' +
+		' <p>%message%</p>' +
+		'</div>';
 	}
 
 	return growlImage;
 }
 
+/*
+* some formatter-functions
+*/
 function formatted_date(input){
 
 	var formatted = '';
@@ -158,8 +162,8 @@ function formatted_price(input){
 }
 function formatted_longtext(input){
 	var formatted = input.replace(/\r\n|\n/g,"<br>")
-					.replace(/\t/g,"&nbsp;&nbsp;&nbsp;&nbsp;")
-					.replace(/  /g," &nbsp;");
+	.replace(/\t/g,"&nbsp;&nbsp;&nbsp;&nbsp;")
+	.replace(/  /g," &nbsp;");
 	return formatted;
 }
 function formatted_flag(input){
@@ -207,98 +211,73 @@ jQuery(function($){
 		isRTL: false,
 		showMonthAfterYear: false,
 		yearSuffix: ''};
-	$.datepicker.setDefaults($.datepicker.regional['de']);
-	
-	$.timepicker.regional['de'] = {
-		timeOnlyTitle: 'Zeit Wählen',
-		timeText: 'Zeit',
-		hourText: 'Stunde',
-		minuteText: 'Minute',
-		secondText: 'Sekunde',
-		millisecText: 'Millisekunde',
-		timezoneText: 'Zeitzone',
-		currentText: 'Jetzt',
-		closeText: 'Fertig',
-		timeFormat: 'hh:mm',
-		amNames: ['vorm.', 'AM', 'A'],
-		pmNames: ['nachm.', 'PM', 'P'],
-		ampm: false
-	};
-	$.timepicker.setDefaults($.timepicker.regional['de']);
-});
+		$.datepicker.setDefaults($.datepicker.regional['de']);
 
-
-
-
-/********** likecms shop *********/
-
-function smSetNavi(n) {
-    jQuery('#mainnavigation ul li a').each(function() {
-        var $this = jQuery(this);
-        $this.removeClass('active');
-        if ($this.text() == n) {
-            $this.addClass('active');
-        }
-    });
-}
-
-
-function uiFunction_website() {
-    return 'javascript: w=window.open(\'likecms.php\', \'sm_website\'); w.focus();';
-}
-
-function uiFunction_ruecknahme_einlagern_click() {
-    return 'javascript: ruecknahme_einlagern();';
-}
-
-function uiFunction_dummy() {
-    return 'javascript:;';
-}
-
+		$.timepicker.regional['de'] = {
+			timeOnlyTitle: 'Zeit Wählen',
+			timeText: 'Zeit',
+			hourText: 'Stunde',
+			minuteText: 'Minute',
+			secondText: 'Sekunde',
+			millisecText: 'Millisekunde',
+			timezoneText: 'Zeitzone',
+			currentText: 'Jetzt',
+			closeText: 'Fertig',
+			timeFormat: 'hh:mm',
+			amNames: ['vorm.', 'AM', 'A'],
+			pmNames: ['nachm.', 'PM', 'P'],
+			ampm: false
+		};
+		$.timepicker.setDefaults($.timepicker.regional['de']);
+	})
 
 
 jQuery(document).ready(function(){
 
-	/*
-	 * global tooltip
-	 */
-	jQuery('body')
+/*
+* global tooltip
+*/
+jQuery('body')
 	.on('mouseenter', '.tooltipTrigger, tr.toolTipRow td:not(.preventDefault)', function() {
 		var content = jQuery(this).data('tooltip');
-                var ttShow = false;
+		var ttShow = false;
 
-                if (
-                    typeof content == 'undefined'
-                    && (
-                        !(content = jQuery(this).parent().data('tooltip'))
-                        || (typeof content == 'undefined')
-                    )
-                ) { // tooltip via other element
+		if (
+			typeof content == 'undefined'
+			&& (
+				!(content = jQuery(this).parent().data('tooltip'))
+				|| (typeof content == 'undefined')
+				)
+			) {
+				// tooltip via other element
 
-                    var ttSelector = jQuery(this).data('tooltipelement');
-                    if (typeof ttSelector == 'undefined') {
-                        // no tooltip
-                    }
-                    else {
-                        if (jQuery(ttSelector).length > 0) {
-                            content = jQuery(ttSelector).html();
-                            ttShow = true;
-                        }
-                    }
-                }
-                else { // tooltip via data-tooltip of trigger or parent
-                    content = unescape(content);
-                    ttShow = true;
-                }
+				var ttSelector = jQuery(this).data('tooltipelement');
+				if (typeof ttSelector == 'undefined') {
+				// no tooltip
+				}
+				else
+				{
+					if (jQuery(ttSelector).length > 0) {
+						content = jQuery(ttSelector).html();
+						ttShow = true;
+					}
+				}
+			}
+			else
+			{ // tooltip via data-tooltip of trigger or parent
+				content = unescape(content);
+				ttShow = true;
+			}
 
-                if (ttShow) {
-                    var $tooltip = jQuery('#tooltip_');
-                    if($tooltip .length == 0) {
-			jQuery('body').append('<div id="tooltip_"></div>');
-			$tooltip  = jQuery('#tooltip_').css({position:'absolute', top:'-1000px', left:'-1000px'});
-                    }
-                    $tooltip.html(content).show();
-                }
+			if (ttShow) {
+				var $tooltip = jQuery('#tooltip_');
+				if($tooltip .length == 0)
+				{
+					jQuery('body').append('<div id="tooltip_"></div>');
+					$tooltip  = jQuery('#tooltip_').css({position:'absolute', top:'-1000px', left:'-1000px'});
+				}
+				$tooltip.html(content).show();
+			}
 	})
 	.on('mouseleave', '.tooltipTrigger, tr.toolTipRow td:not(.preventDefault)', function() {
 		jQuery('#tooltip_').hide();
@@ -306,37 +285,40 @@ jQuery(document).ready(function(){
 	.on('mousemove', '.tooltipTrigger, tr.toolTipRow td:not(.preventDefault)', function(e) {
 		var win_height = jQuery(window).height();
 		var win_width = jQuery(window).width();
-                var tt_height = jQuery('#tooltip_').height();
-                var tt_width = jQuery('#tooltip_').width();
+		var tt_height = jQuery('#tooltip_').height();
+		var tt_width = jQuery('#tooltip_').width();
 
 		var tt = jQuery('#tooltip_');
 
-                var x;
-                var y;
+		var x;
+		var y;
 
-                if (e.pageX <= (win_width/2)) { // nach rechts
-                    x = e.pageX + 20;
-                }
-                else { // nach links
-                    x = e.pageX - 40 - tt_width;
-                }
+		if (e.pageX <= (win_width/2)) {
+			// to right
+			x = e.pageX + 20;
+		}
+		else {
+			// to left
+			x = e.pageX - 40 - tt_width;
+		}
 
-                if (e.pageY <= (win_height/2 - tt_height/2)) { // nach unten
-                    y = e.pageY + 20;
-                }
-                else if (e.pageY <= (win_height/2 + tt_height/2)) { // mittig
-                    y = e.pageY - (tt_height/2);
-                }
-                else { // noch oben
-                    y = e.pageY - 40 - tt_height;
-                }
+		if (e.pageY <= (win_height/2 - tt_height/2)) {
+			// down
+			y = e.pageY + 20;
+		}
+		else if (e.pageY <= (win_height/2 + tt_height/2)) {
+			// middle
+			y = e.pageY - (tt_height/2);
+		}
+		else {
+			// up
+			y = e.pageY - 40 - tt_height;
+		}
 
-                if (y <= 10 || (y + tt_height) > win_height) {
-                    y = 10;
-                }
+		if (y <= 10 || (y + tt_height) > win_height) {
+			y = 10;
+		}
 
 		tt.css({top:y+'px', left:x+'px'});
-	});
-
-
+		});
 });
