@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!--
-    Document   : calendar.xml
-    Created on : 1. Dezember 2011, 16:27
-    Author     : Tino
-    Description: example for a jxbf - xml showing a calendar
-        Purpose of the document follows.
+	Document   : calendar.xml
+	Created on : 1. Dezember 2011, 16:27
+	Author     : Tino
+	Description: example for a jxbf - xml showing a calendar
+	Purpose of the document follows.
 -->
 <panels>
-	<!--
-		**********************************************
-			panel
-		**********************************************
-	-->
 	<panel width="full" height="full" title="Projekte">
 		<section name="cal">
 			<calendar name="calendar1"> <!-- feed="calendarfeed.php"feed zum abruf der events im Zeitraum -->
@@ -28,7 +22,7 @@
 						<title><![CDATA[Notiz öffnen]]></title>
 						<tooltip><![CDATA[diese Notiz öffnen]]></tooltip>
 					</entry>
-				</eventclick>
+				</eventnavigation>
 			</calendar>
 		</section>
 	</panel>
