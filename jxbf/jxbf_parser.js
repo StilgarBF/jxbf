@@ -184,8 +184,6 @@ jQuery(document).ready(function(){
                         
 			api.load();
 			jQuery('.ocWrapper')[0].scrollTop=0;
-// bastel remove
-//			console.log('open');
 		}
 
 		api.onBeforeClose(function(){
@@ -365,13 +363,12 @@ function parsePanel(xml) {
 		view		+= '<div class="fl_panel p_w_calc {W:'+width+'}" id="'+pan_id+'" '+((state == 'hidden')?'style="display:none;"':'')+'>';
 	}
 
-// bastel change start, panel navigation
+	// panel navigation
 	view	+='<div class="panel_inner"><div class="panel_head"><div class="panel_head_inner">'+title+'</div>';
 	jQuery(xml).children('panelnavigation').each(function(){
 		view += parse_navigation( navigation2Object(jQuery(this)) );
 	});
-        view    +='</div>';
-// bastel change end
+	view	+='</div>';
 
 
 	if (String(parseInt(height)) != height) { 	// string like half, full, third ..
@@ -510,7 +507,7 @@ function bindLive() {
 	});
 
 	jQuery('a[rel=xml]').live('click', function(e){
-			if( (!$.browser.msie && e.button == 0) || ($.browser.msie &&  e.button == 1) ) {
+			if( e.which == 1) {
 				e.preventDefault();
 
 				var check = false;
@@ -557,8 +554,8 @@ function bindEvents(){
 /*****************************************/
 var space_around_panel = 0;
 
-// bastel change, wegen neuem layout
-var additionalSpace = 5;  // gegen rundungsfehler
+
+var additionalSpace = 5;
 function setPanelHeight() {
 	// calculate dif betw. inner and outer pannel size
 	if( !space_around_panel) {
@@ -569,8 +566,6 @@ function setPanelHeight() {
 		space_around_panel += parseInt(first_panel_content.siblings('.panel_head').height());
 		space_around_panel += parseInt(jQuery('.panel_inner', first_panel).css('margin-bottom'));
 	}
-
-// bastel add, - jQuery('.fl_panel:first').position().top  - wegen panel oben
 
 	var win_height = jQuery(window).height()
 						- ( parseInt(jQuery('body').css('padding-top')) + parseInt(jQuery('body').css('padding-bottom')) )
