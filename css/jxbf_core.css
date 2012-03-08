@@ -1,95 +1,3 @@
-/*
- *
- * Javascript XML Backend Framework
- *
- * Main CSS
- *
- */
-
-body {
-	background-color:	white;
-	font-family:		arial, verdana, sans-serif;
-	font-size:			12px;
-	color:				black;
-	margin:				0;
-	padding:			10px 10px 0 10px;
-}
-a:link,
-a:active,
-a:visited,
-a:hover {
-	color:				#00BB00;
-	text-decoration:	none;
-}
-img {
-	border: 			0px none;
-}
-.edit img {
-	margin-right:		5px;
-	margin-bottom:		5px;
-}
-#left_collumn {
-	float:				left;
-	width:				200px;
-}
-
-ul.navigation,
-ul.navigation ul {
-	list-style-type:	none;
-	margin:				0px;
-	padding:			0px;
-}
-ul.navigation span.confirmationMessage {
-	display:			none;
-}
-ul.navigation li img {
-	margin-right:		5px;
-}
-
-#left_collumn .left_panel {
-	border:				1px solid black;
-	padding:			10px;
-}
-
-#left_collumn #mainnavigation ul.navigation,
-#left_collumn #mainnavigation ul.navigation ul{
-	margin:				0px;
-}
-#left_collumn #mainnavigation ul.navigation ul{
-	margin:				0px 0px 8px 5px;
-}
-#left_collumn #mainnavigation ul.navigation li,
-#left_collumn #mainnavigation ul.navigation ul li {
-	padding:			2px 0px;
-}
-#left_collumn #mainnavigation ul.navigation li a {
-	display:			block;
-	padding:			2px 0px;
-}
-
-ul.horizontal {
-
-}
-ul.horizontal li {
-	float:				left;
-	margin-right:		15px;
-}
-ul.horizontal li a {
-	display:			block;
-	text-align:			center;
-}
-ul.horizontal li a img {}
-ul.horizontal li a span {
-	display:			block;
-}
-
-#main_collumn {
-	margin-left:		202px;
-}
-
-.clickable {
-	cursor:				pointer;
-}
 /*****************************************/
 /** Panel								**/
 /*****************************************/
@@ -135,332 +43,83 @@ ul.horizontal li a span {
 	width:			50%
 }
 
-.fl_panel .panel_inner {
-	margin-left:	10px;
-	margin-bottom:	10px;
-}
+	.fl_panel .panel_inner {
+		margin-left:	10px;
+		margin-bottom:	10px;
+	}
 
-.fl_panel .panel_inner .panel_head_inner {
-	height:				25px;
-	padding:			0px 10px;
-	font-weight:		bold;
-	line-height:		25px;
-}
-.fl_panel .panel_inner .panel_content {
-	padding:			10px;
-	border:				1px solid black;
-}
+		.fl_panel .panel_inner .panel_head {
+			height: 25px;
+			background-color: #ddd;
+			border-top-left-radius: 10px;
+			border-top-right-radius: 10px;
+			border-left: 1px solid #ccc;
+			border-right: 1px solid #ccc;
+			border-top: 1px solid #ccc;
+		}
+		.fl_panel .panel_inner .panel_head_inner {
+			height:				25px;
+			padding:			0px 10px;
+			font-weight:		bold;
+			line-height:		25px;
+			position: 			relative;
+			float: 				left;
+			color: 				#000
+		}
 
-/*****************************************/
-/** PanelTable							**/
-/*****************************************/
+			.panel_head ul.navigation {
+				top: 0px;
+			}
+				.panel_head ul.navigation li {
+					float: left;
+					border-left: 1px solid #ccc;
+					top: 0px;
+					position: relative;
+					min-height: 25px;
+				}
+				.panel_head ul.navigation li:hover {
+					background-color: #ccc;
+				}
+					.panel_head ul.navigation li a {
+						padding-left: 5px;
+						padding-right: 5px;
+						top: 5px;
+					}
 
-table {
-	line-height:		18px;
-}
-table th {
-	text-align:			left;
-	font-weight:		bold;
-	padding-left:		11px;
-	background-image:	url(../img/tablehead.gif);
-	background-repeat:	no-repeat;
-	background-position: -7px center;
-}
-.overlay table th {
-	background-color:	#DDD;
-	border:				solid #AAA;
-	border-width:		1px 0px;
-	margin-bottom:		2px;
-}
-table td {
-	vertical-align:		top;
-}
-table th.headerSortDown {
-	background-image:	url(../img/tablehead_up.gif);
-}
-table th.headerSortUp {
-	background-image:	url(../img/tablehead_down.gif);
-}
-table th.nosort {
-	background-image:	none;
-}
-table tr.newNote td {
-	font-weight:		bold;
-}
-table td.hovered {
-	background-color:	#EEE;
-}
-table td.centered {
-	text-align:			center;
-}
-table td ul.navigation li {
-	display:			inline;
-}
-table tfoot td {
-	padding-top:		10px;
-}
-table tfoot td label {
-	cursor:				pointer;
-}
-table td .edit img {
-	margin-bottom:		0px;
-}
+					.panel_head ul.navigation li ul li {
+						background-color: #ccc;
+						border-left: 1px solid #bbb;
+						border-right: 1px solid #bbb;
+						border-bottom: 1px solid #bbb;
+					}
 
-/*****************************************/
-/** tabbed Pane							**/
-/*****************************************/
-ul.tabs { /* general settings */
-	text-align:			left;
-	margin:				1em 0 1em 0;
-	font:				bold 11px verdana, arial, sans-serif;
-	border-bottom:		1px solid darkred;
-	list-style-type:	none;
-	padding:			3px 10px 3px 10px;
-}
+					.panel_head ul.navigation li ul li:hover {
+						background-color: #ddd;
+					}
 
-ul.tabs li { /* do not change */
-	display:			inline;
-	margin-right:		5px;
-}
+					.panel_head ul.navigation li ul li {
+						height: auto;
+					}
 
-ul.tabs li.tab_active {
-	border-bottom:		1px solid darkred;
-	background-color:	#fff;
-}
+					.panel_head ul.navigation li ul li a {
+						display: block;
+						width: 200px;
+						padding: 2px 0px 2px 5px!important;
+					}
 
-ul.tabs li.tab_active a {
-	background-color:	#fff;
-	color:				#000;
-	position:			relative;
-	top:				1px;
-	padding-top:		4px;
-        font-size: 1.2em;
-}
+					.panel_head ul.navigation li ul li:last-child {
+						border-bottom-left-radius: 10px;
+						border-bottom-right-radius: 10px;
+					}
 
-ul.tabs li a {
-	padding:			3px 4px;
-	border:				1px solid darkred;
-	background-color:	#E9E9E9;
-	color:				#000;
-	margin-right:		0px;
-	text-decoration:	none;
-	border-bottom:		none;
-}
+				.panel_head ul.navigation li a img {
+					vertical-align: middle;
+				}
 
-ul.tabs a:hover {
-	background:			#fff;
-}
-
-div.hidden_tab {
-	display:			none;
-}
-
-/*****************************************/
-/** viewNote							**/
-/*****************************************/
-.viewData .block {
-	padding:			0px 10px;
-	margin-bottom:		5px;
-}
-
-.viewData .key,
-.editData .key {
-	float:				left;
-	font-weight:		bold;
-	width:				34%;
-}
-.viewData .value,
-.editData .value {
-	float:				left;
-	width:				66%;
-	position:			relative;
-}
-
-.editData .block {
-	padding:			5px 10px;
-	margin-bottom:		10px;
-}
-.editData label {
-	display:			block;
-	float:				left;
-	line-height:		22px;
-	width:				100px;
-}
-.editData label.error_label {
-	color:				#FF4444;
-}
-.editData .value label.error { /*genereted by validation plugin*/
-	width:				100%;
-}
-.editData .emphasis {
-	font-weight:		bold;
-}
-.editData input.textInput,
-.editData textarea.textInput,
-.editData select.selectInput {
-	border:				1px solid #DDD;
-	color:				black;
-	padding:			1px 0 1px 3px;
-	width:				100%;
-}
-.editData textarea.textInput {
-	height:				150px;
-}
-.editData textarea.superlong {
-	height:				400px;
-}
-.editData .value input.error,
-.editData .value textarea.error {
-	border:				1px solid red;
-}
-.editData div.error {
-	color:				red;
-	font-weight:		bold;
-}
-
-div.check {
-	float:				left;
-	padding-right:		20px;
-}
-.check label {
-	width:				auto;
-}
-fieldset {
-	margin-bottom:		10px;
-}
-
-.fl_panel fieldset {
-	border:				1px solid black;
-}
-.overlay fieldset {
-	border:				1px solid black;
-}
-.fl_panel hr {
-	background-color: 	black;
-}
-.dyn_suggest {
-	border:				1px solid #black;
-}
-.dyn_suggest ul {
-	list-style:			none;
-	margin:				5px;
-	padding:			0px;
-}
-.dyn_suggest ul li {
-	background-color:	white;
-	margin-bottom:		1px;
-	padding:			1px 5px;
-}
-.dyn_suggest ul li:hover {
-	background-color:	#EEE;
-	margin-bottom:		1px;
-}
-
-
-/*****************************************/
-/** FileManager							**/
-/*****************************************/
-ul.directory {
-	list-style:			none;
-	padding:			0px;
-}
-ul.directory li {
-	padding:			0px;
-	margin:				0px 0px 0px 15px;
-}
-ul.directory li img {
-	margin-right:		5px;
-}
-ul.directory li.dir span {
-	cursor:				pointer;
-}
-ul.directory li {
-	position:			relative;
-}
-ul.directory div.fileinfo {
-	display:			none;
-	position:			absolute;
-	top:	 			22px;
-	left:				30px;
-	background-color:	white;
-	color:				black;
-	border:				1px solid;
-	padding:			1px;
-	z-index:			5;
-}
-
-#tooltip_ {
-	position:			absolute;
-	z-index:			100;
-	border:				1px solid black;
-	background-color:               white;
-	padding:			5px;
-	width:				300px;
-}
-/*****************************************/
-/** overlay								**/
-/*****************************************/
-/* the overlayed element */
-div.overlay {
-
-    /* growing background image */
-    background-image:url(../img/overlay/white_big.png);
-
-    /* dimensions after the growing animation finishes  */
-    width:710px;
-    height:515px;
-
-    /* initially overlay is hidden */
-    display:none;
-
-    /* some padding to layout nested elements nicely  */
-    padding:55px 35px 55px 55px;
-
-    color:		black;
-}
-
-div.overlay div.ocWrapper {
-	height:		520px;
-	overflow:	auto;
-}
-
-/* default close button positioned on upper right corner */
-div.overlay a.close {
-    background-image:url(../img/overlay/close.png);
-    position:absolute;
-    right:5px;
-    top:5px;
-    cursor:pointer;
-    height:35px;
-    width:35px;
-}
-
-
-/* black */
-div.overlay.black {
-    background:url(../img/overlay/transparent.png) no-repeat !important;
-    color:#fff;
-}
-
-/* petrol */
-div.overlay.petrol {
-    background:url(../img/overlay/petrol.png) no-repeat !important;
-    color:#fff;
-}
-
-div.black h2, div.petrol h2 {
-    color:#ddd;
-}
-
-
-.clearfix:before, .clearfix:after { content: ""; display: table; }
-.clearfix:after { clear: both; }
-.clearfix { *zoom: 1; }
-
-#growlDock a {
-	font-weight:		bold;
-}
-/* datepicker */
-.AnyTime-pkr {
-	z-index:5000;
-}
+		.fl_panel .panel_inner .panel_content {
+			padding:			10px;
+			border:				1px solid #dfdfdf;
+			border-bottom-left-radius: 10px;
+			border-bottom-right-radius: 10px;
+			border-color: #dfdfdf;
+		}

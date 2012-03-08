@@ -247,7 +247,7 @@ function parseXML(xml) {
 	// check for navigation
 	if((jQuery(xml).find('mainnavigation').length > 0) && (jQuery('#mainnavigation').length > 0)) {
 		//jQuery('#mainnavigation .navigation').replaceWith( parse_navigation( navigation2Object(jQuery(xml).find('mainnavigation')) ) );
-		jQuery('#mainnavigation')[0].innerHTML=parse_navigation( navigation2Object(jQuery(xml).find('mainnavigation')) ) ;
+		jQuery('#mainnavigation ul').html(parse_mainnavigation( navigation2Object(jQuery(xml).find('mainnavigation')) ) ) ;
 	}
 
 	// process panel

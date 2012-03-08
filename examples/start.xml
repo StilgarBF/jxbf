@@ -36,7 +36,7 @@
 			panel
 		**********************************************
 	-->
-	<panel width="full" height="200" title="Projekte">
+	<panel width="full" title="Projekte">
 		<section>
 			<tabbedpane>
 				<tab title="Tab 1" name="tab_1">
@@ -73,6 +73,20 @@
 			                        <cell title="umsatz" type="price" footerClass="alignRight nowrap" ><![CDATA[2130.00]]></cell>
 			                        <cell title="provision" type="price" footerClass="alignRight nowrap" ><![CDATA[426.00]]></cell>
 								</row>
+								<row>
+									<cell>1</cell>
+									<cell>2</cell>
+									<cell>1</cell>
+									<cell>2</cell>
+								</row>
+								<row>
+									<tooltip><![CDATA[<span style="color:green">alles ok</span>]]></tooltip>
+
+			                        <cell title="o_name" ><![CDATA[]]></cell>
+			                        <cell title="gastgeber" ><![CDATA[]]></cell>
+			                        <cell title="umsatz" type="price" footerClass="alignRight nowrap" ><![CDATA[2130.00]]></cell>
+			                        <cell title="provision" type="price" footerClass="alignRight nowrap" ><![CDATA[426.00]]></cell>
+								</row>
 							</tablerows>
 							<tablefoot>
 			                        <cell title="o_name" ><![CDATA[]]></cell>
@@ -86,7 +100,7 @@
 				<tab title="Tab 2" name="tab_2">
 					<section>
 						<form name="testform_panel">
-							<datagroup title="testformular_panel" name="datagroup_1_panel">
+							<datagroup title="testformular_panel" name="datagroup_1_panel" cols="4">
 								<field type="datetime"
 										fieldName="datumzeit_1_2"
 										title="Datum Zeitangabe">2011-01-25 10:09</field>
@@ -96,14 +110,33 @@
 								<field type="date"
 										fieldName="datumzeit_3_2"
 										title="Datum"></field>
-
+							</datagroup>
+							<datagroup title="testformular_panel" name="datagroup_1_panel" cols="4">
+								<field type="datetime"
+										fieldName="datumzeit_1_2"
+										title="Datum Zeitangabe">2011-01-25 10:09</field>
+								<field type="time"
+										fieldName="datumzeit_2_2"
+										title="Zeitangabe"></field>
+								<field type="date"
+										fieldName="datumzeit_3_2"
+										title="Datum"></field>
+							</datagroup>
+							<datagroup title="testformular_panel" name="datagroup_1_panel" cols="4">
+								<field type="datetime"
+										fieldName="datumzeit_1_2"
+										title="Datum Zeitangabe">2011-01-25 10:09</field>
+								<field type="time"
+										fieldName="datumzeit_2_2"
+										title="Zeitangabe"></field>
+								<field type="date"
+										fieldName="datumzeit_3_2"
+										title="Datum"></field>
 							</datagroup>
 						</form>
 					</section>
 				</tab>
 			</tabbedpane>
-
 		</section>
 	</panel>
-
 </panels>

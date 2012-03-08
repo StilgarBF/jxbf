@@ -87,7 +87,7 @@ function parse_tabledata(xml) {
 			tableID=' id="'+tabledata.attr('name')+'"';
 		}
 
-		html += '<table width="100%" border="0" cellpadding="0" cellspacing="0" '+tableID+(rowClickObject?' class="jxbf_table metadata '+rowClickObject+'"':'')+'>';
+		html += '<table width="100%" border="0" cellpadding="0" cellspacing="0" '+tableID+' class="jxbf_table table table-striped table-bordered table-condensed" data-rowclick="'+rowClickObject+'">';
 		html += '<thead>';
 
 		html += '<tr>';
@@ -239,10 +239,10 @@ function parse_tabledata(xml) {
 					content = window['formatted_'+fieldtype](content);
 				}
 				var foot_class = jQuery(this).attr('footerClass') ? (' class="'+jQuery(this).attr('footerClass')+'"') : '';
-				html 	+= '<td'+foot_class+'>' + content + '</td>';
+				html 	+= '<th'+foot_class+'>' + content + '</th>';
 			});
 			if (rownavigation) {
-				html += '<td></td>';
+				html += '<th></th>';
 			}
 			html += '<tr></tfoot>';
 		}

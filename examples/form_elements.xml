@@ -29,7 +29,7 @@
 					<field title="text" fieldName="username" type="text" editable="yes" setFocus="true" note="has focus after load!!"><![CDATA[]]></field>
 
 					<!-- password -->
-					<field title="password" fieldName="password" type="password" editable="yes"><![CDATA[]]></field>
+					<field title="password" fieldName="password" type="password" editable="yes" hasError="true" errorMessage="Bitte geben Sie ihr Passwort ein"><![CDATA[]]></field>
 
 					<!-- select -->
 					<field title="Select" fieldName="lager" type="select" editable="yes">
@@ -77,7 +77,12 @@
 					<field title="datetime" fieldName="datetime" type="datetime" editable="yes"><![CDATA[2012-02-22 14:55]]></field>
 				</datagroup>
 				<buttons>
-					<button value="mysubmit"><![CDATA[Submit Form]]></button>
+					<button value="mysubmit" type="primary"><![CDATA[Submit Form primary]]></button>
+					<button value="mysubmit" type="info"><![CDATA[info]]></button>
+					<button value="mysubmit" type="success"><![CDATA[success]]></button>
+					<button value="mysubmit" type="danger"><![CDATA[danger]]></button>
+					<button value="mysubmit" type="primary"><![CDATA[Submit Form]]></button>
+					<button value="mysubmit" type="inverse"><![CDATA[inverse]]></button>
 				</buttons>
 			</form>
 		</section>

@@ -62,6 +62,31 @@ function parse_navigation(navObject, settings) {
 	return html;
 }
 
+// for mainnavigation
+function parse_mainnavigation(navObject, settings) {
+	
+	if(!jQuery.isArray(navObject.entries) )
+	{
+		// if parsed from a section navObject is not the object but XML - convert
+		navObject = navigation2Object(navObject);
+	}
+
+	settings=jQuery.extend({
+		data:		false,
+		showImage:	true,
+		showTitle:	true,
+		context:	false,
+		idSuffix:	false
+	},settings);
+
+	// a navigation will always replace the old naviagtion
+	v_class="navigation clearfix "+((navObject.v_class) ? navObject.v_class : '');
+
+	var html = createNavLevel(navObject, settings);
+
+	return html;
+}
+
 function navigation2Object(xml) {
 
 	var navObject = {};

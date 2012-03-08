@@ -40,276 +40,39 @@ function parse_form(xml) {
 	var formvalidate = new Array();
 	var html = '<div class="editData">';
 
-	html += '<form action="'+buildURL(parseUrlData( jQuery(xml) ))+'" method="post" id="'+jQuery(xml).attr('name')+'" enctype="multipart/form-data" acceptCharset="UTF-8">';
+	html += '<form action="'+buildURL(parseUrlData( jQuery(xml) ))+'" method="post" id="'+jQuery(xml).attr('name')+'" enctype="multipart/form-data" acceptCharset="UTF-8" class="form-horizontal">';
 
 	// errorhandling
 	if(jQuery(xml).find('field[hasError=true]').length > 0) {
 		html += '<div class="block error">';
 		jQuery(xml).find('field[hasError=true]').each(function(){
-			html += jQuery(this).attr('errorMessage')+'<br />';
+			if(jQuery(this).attr('errorMessage') != undefined) {
+				html += jQuery(this).attr('errorMessage')+'<br />';
+			}
 		});
 		html += '</div>';
 	}
 
+	html += '<div class="row-fluid">';
+
 	jQuery(xml).find('datagroup').each(function(){
 
-		if(jQuery(this).attr('title') != undefined) {
-			html += '<fieldset'+((jQuery(this).attr('name') != undefined)?' id="'+jQuery(this).attr('name')+'"':'')+'>';
-			html += '<legend>'+jQuery(this).attr('title')+'</legend>';
-		}
-
-		jQuery(this).find('field').each(function(){
-
-			addFieldClass	= '';
-			addLabelClass	= '';
-			if(jQuery(this).attr('hasError') == 'true') {
-				addFieldClass+=' error';
-				addLabelClass+=' error_label';
-			}
-
-			if(jQuery(this).attr('setFocus') == 'true') {
-				addFieldClass+=' setFocus';
-			}
-
-			if(jQuery(this).attr('class')) {
-				addFieldClass+=' '+jQuery(this).attr('class');
-			}
-
-			// prepare validation
-
-			var thisID=jQuery(this).attr('fieldName').replace(/\[|\]/g,'_');
-
-			if((jQuery(this).attr('required') == 'yes') || jQuery(this).attr('regex')) {
-
-				var field={};
-
-				field.name=thisID;
-
-				if(jQuery(this).attr('required') == 'yes') {
-					field.required			=	true;									}
-
-				if(jQuery(this).attr('regex')) {
-					field.regex				=	jQuery(this).attr('regex');				}
-
-				if(jQuery(this).attr('validateMessage')) {
-					field.validateMessage	=	jQuery(this).attr('validateMessage');	}
-
-				if(jQuery(this).attr('requiredMessage')) {
-					field.requiredMessage	=	jQuery(this).attr('requiredMessage');	}
-
-				formvalidate.push(field);
-
-			}
-
-
-
-			fieldtype 	= jQuery(this).attr('type');
-
-			if (fieldtype == 'hidden') {
-
-				html += '<input type="hidden" name="'+jQuery(this).attr('fieldName')+'" value="'+jQuery(this).attr('value').replace(/&/g, "&amp;").replace(/\"/g, "&quot;")+'" />';
-
-			} else {
-				html += '<div class="block clearfix">';
-				html += '<div class="key">';
-				html += '<label for="'+thisID+'" class="'+addLabelClass+'">'+jQuery(this).attr('title')+'</label>';
-				html += '</div><div class="value">';
-
-				if (fieldtype == 'select') {
-		// select
-					var attributes = '';
-					if(jQuery(this).attr('multiple') == 'yes') {
-						attributes = ' name="'+jQuery(this).attr('fieldName')+'[]" multiple="multiple" size="5"';
-					} else {
-						attributes = ' name="'+jQuery(this).attr('fieldName')+'"';
-					}
-					html += '<select id="'+thisID+'" class="selectInput '+addFieldClass+'" '+attributes+'>';
-
-					selected = jQuery(this).find('value').text();
-
-					jQuery(this).find('option').each(function(){
-						html += '<option value="'+jQuery(this).attr('id')+'"';
-						if(jQuery(this).attr('preselect') == 'yes') {
-							html += 'selected="selected"';
-						}
-						html += '>'+jQuery(this).text()+'</option>';
-					});
-					html += '</select>';
-
-
-				} else if (fieldtype == 'flag') {
-		// checkbox
-					if(jQuery(this).text()=='1') {
-						html += '<input type="checkbox" checked="checked" ';
-					} else {
-						html += '<input type="checkbox" ';
-					}
-					html += 'name="'+jQuery(this).attr('fieldName')+'" id="'+thisID+'" value="1" class="'+addFieldClass+'" />';
-
-
-				} else if (fieldtype == 'flagToggle') {
-		// checkbox - toggled
-
-					var v_class	= 'class="inputToggle metadata {target:\''+jQuery(this).attr('target')+'\'} '+addFieldClass+'"';
-
-					if(jQuery(this).text()=='1') {
-						html += '<input type="checkbox" checked="checked" ';
-					} else {
-						html += '<input type="checkbox" ';
-					}
-					html += v_class+' name="'+jQuery(this).attr('fieldName')+'" id="'+thisID+'" value="1" />';
-
-
-				} else if (fieldtype == 'toggleRadios') {
-		// toggle radiogroup
-					var fieldname = jQuery(this).attr('fieldName');
-
-					jQuery(this).find('option').each(function(){
-
-						var v_class	= 'class="inputToggle metadata {target:\''+jQuery(this).attr('target')+'\'} '+addFieldClass+'"';
-
-						html += '<div class="check">';
-						html += '<label for="'+thisID+'_'+jQuery(this).attr('id')+'">'+jQuery(this).text()+'</label>';
-						html += '<input type="radio" '+v_class;
-							html += ((jQuery(this).attr('preselect') == 'yes') ? 'checked="checked" ' : ' ');
-							html += 'value="'+jQuery(this).attr('id')+'" ';
-							html += 'name="'+fieldname+'[]" ';
-							html += 'id="'	+thisID+'_'+jQuery(this).attr('id')+'">';
-						html += '</div>';
-					});
-
-
-				} else if (fieldtype == 'radios') {
-		// radiogroup
-					var fieldname = jQuery(this).attr('fieldName');
-
-					jQuery(this).find('option').each(function(){
-						html += '<div class="check">';
-						html += '<label for="'+thisID+'_'+jQuery(this).attr('id')+'">'+jQuery(this).text()+'</label>';
-						html += '<input type="radio" ';
-							html += ((jQuery(this).attr('preselect') == 'yes') ? 'checked="checked" ' : ' ');
-							html += 'class="'+addFieldClass+'" ';
-							html += 'value="'+jQuery(this).attr('id')+'" ';
-							html += 'name="'+fieldname+'[]" ';
-							html += 'id="'	+thisID+'_'+jQuery(this).attr('id')+'">';
-						html += '</div>';
-					});
-
-
-				} else if (fieldtype == 'flags') {
-		// multiple checkboxes
-					var fieldname = jQuery(this).attr('fieldName');
-
-					jQuery(this).find('option').each(function(){
-						html += '<div class="check">';
-						html += '<label for="'+thisID+'_'+jQuery(this).attr('id')+'">'+jQuery(this).text()+'</label>';
-						html += '<input type="checkbox" ';
-							html += ((jQuery(this).attr('preselect') == 'yes') ? 'checked="checked" ' : ' ');
-							html += 'class="'+addFieldClass+'" ';
-							html += 'value="'+jQuery(this).attr('id')+'" ';
-							html += 'name="'+fieldname+'[]" ';
-							html += 'id="'	+thisID+'_'+jQuery(this).attr('id')+'">';
-						html += '</div>';
-					});
-
-				} else if (fieldtype == 'longtext') {
-		// textarea
-					html += '<textarea id="'+thisID+'" name="'+jQuery(this).attr('fieldName')+'" class="textInput '+addFieldClass+'">'+jQuery(this).text()+'</textarea>';
-				} else if (fieldtype == 'superlongtext') {
-		// textarea - long
-					html += '<textarea id="'+thisID+'" name="'+jQuery(this).attr('fieldName')+'" class="textInput superlong '+addFieldClass+'">'+jQuery(this).text()+'</textarea>';
-
-
-
-				} else if (fieldtype == 'date') {
-		// datepicker
-					html += '<input type="text" class="datepick textInput '+addFieldClass+'" id="'+thisID+'" name="'+jQuery(this).attr('fieldName')+'" value="'+jQuery(this).text()+'" />';
-
-
-
-				} else if (fieldtype == 'time') {
-		// timepicker
-					html += '<input type="text" class="timepick textInput '+addFieldClass+'" id="'+thisID+'" name="'+jQuery(this).attr('fieldName')+'" value="'+jQuery(this).text()+'" />';
-
-
-
-				} else if (fieldtype == 'datetime') {
-		// date / time
-					html += '<input type="text" id="'+thisID+'" class="textInput datetimepick '+addFieldClass+'" name="'+jQuery(this).attr('fieldName')+'" value="'+jQuery(this).text()+'" />';
-
-
-
-				} else if (fieldtype == 'suggest') {
-		// suggest
-					html += '<input type="text" name="'+jQuery(this).attr('fieldName')+'" id="'+thisID+'" value="'+jQuery(this).find('value').text()+'"';
-					if(jQuery(this).attr('editable') == 'no') {
-						html += ' disabled="disabled"';
-					}
-					html += ' class="textInput inputSuggest '+addFieldClass+'">';
-					var values = '';
-					jQuery(this).find('options option').each(function() {
-						values += ((values == '') ? '':'-|-')+jQuery(this).text();
-					});
-					html += '<input type="hidden" value="'+values+'" id="h_'+thisID+'" />';
-
-
-				} else if (fieldtype == 'upload') {
-		// upload
-					html += '<input type="file" name="'+jQuery(this).attr('fieldName')+'[]" id="'+thisID+'" value="'+jQuery(this).find('value').text()+'"';
-					if(jQuery(this).attr('editable') == 'no') {
-							html += ' disabled="disabled"';
-						}
-					html += ' class="textInput multifile '+addFieldClass+'">';
-
-				} else if (fieldtype == 'password') {
-		// password
-					var v_class = ' class="textInput '+addFieldClass + '"';
-
-					html += '<input type="password" name="'+jQuery(this).attr('fieldName')+'" id="'+thisID+'" value="'+jQuery(this).text()+'"';
-					if(jQuery(this).attr('editable') == 'no') {
-						html += ' disabled="disabled"';
-					}
-					html += ' '+v_class+' />';
-
-
-
-				} else {
-		// text			if (fieldtype == 'text')
-					var v_class = ' class="textInput '+addFieldClass;
-					if(fieldtype == 'decimal') {
-						v_class += ' decimal_'+jQuery(this).attr('decimals');
-					}
-					v_class += '"';
-
-					html += '<input type="text" name="'+jQuery(this).attr('fieldName')+'" id="'+thisID+'" value="'+jQuery(this).text()+'"';
-					if(jQuery(this).attr('editable') == 'no') {
-						html += ' disabled="disabled"';
-					}
-					html += ' '+v_class+' />';
-
-				}
-
-				if(jQuery(this).attr('note') != undefined) {
-					html	+= '<span class="note">'+jQuery(this).attr('note')+'</span>';
-				}
-				html += '</div></div>';
-
-			}
-
-		});
-
-		if(jQuery(this).attr('title') != undefined) {
-			html += '</fieldset>';
-		}
+		html += parse_form_datagroup(this);
 
 	});
 
+	html += '</div>';
+
 	if (jQuery(xml).find('buttons').length > 0) {
 		jQuery(xml).find('buttons button').each(function(){
-			html += '<input type="submit" class="inputSubmit" name="'+jQuery(this).attr('value')+'" value="'+jQuery(this).text()+'" />';
+			var buttontype = 'btn-primary';
+			if(jQuery(this).attr('type') != undefined) {
+				buttontype = 'btn-'+jQuery(this).attr('type');
+			}
+			html += '<input type="submit" class="btn '+buttontype+'" name="'+jQuery(this).attr('value')+'" value="'+jQuery(this).text()+'" /> ';
 		});
 	} else {
-		html += '<input class="inputSubmit" type="submit" value="absenden" />';
+		html += '<input class="btn btn-primary" type="submit" value="absenden" /> ';
 	}
 
 	html += '</form>';
@@ -326,6 +89,277 @@ function parse_form(xml) {
 
 	return html;
 
+}
+
+function parse_form_field(xml) {
+
+	var $this = jQuery(xml);
+
+	var html = '';
+
+	var addFieldClass	= '';
+	var addGroupClass	= '';
+
+	if($this.attr('hasError') == 'true') {
+		addGroupClass +=' error';
+	}
+
+	if($this.attr('setFocus') == 'true') {
+		addFieldClass +=' setFocus';
+	}
+
+	if($this.attr('class')) {
+		addFieldClass +=' '+$this.attr('class');
+	}
+
+	// prepare validation
+
+	var thisID = $this.attr('fieldName').replace(/\[|\]/g,'_');
+
+	if(($this.attr('required') == 'yes') || $this.attr('regex')) {
+
+		var field={};
+
+		field.name=thisID;
+
+		if($this.attr('required') == 'yes') {
+			field.required			=	true;									}
+
+		if($this.attr('regex')) {
+			field.regex				=	$this.attr('regex');				}
+
+		if($this.attr('validateMessage')) {
+			field.validateMessage	=	$this.attr('validateMessage');	}
+
+		if($this.attr('requiredMessage')) {
+			field.requiredMessage	=	$this.attr('requiredMessage');	}
+
+		formvalidate.push(field);
+
+	}
+
+
+	var fieldtype 	= $this.attr('type');
+
+	if (fieldtype == 'hidden') {
+
+		html += '<input type="hidden" name="'+$this.attr('fieldName')+'" value="'+$this.attr('value').replace(/&/g, "&amp;").replace(/\"/g, "&quot;")+'" />';
+
+	} else {
+		html += '<div class="control-group '+addGroupClass+'">';
+		html += '<label for="'+thisID+'" class="control-label">'+$this.attr('title')+'</label>';
+		html += '<div class="controls">';
+
+		if (fieldtype == 'select') {
+// select
+			var attributes = '';
+			if($this.attr('multiple') == 'yes') {
+				attributes = ' name="'+$this.attr('fieldName')+'[]" multiple="multiple" size="5"';
+			} else {
+				attributes = ' name="'+$this.attr('fieldName')+'"';
+			}
+			html += '<select id="'+thisID+'" class="selectInput '+addFieldClass+'" '+attributes+'>';
+
+			selected = $this.find('value').text();
+
+			$this.find('option').each(function(){
+				html += '<option value="'+jQuery(this).attr('id')+'"';
+				if($this.attr('preselect') == 'yes') {
+					html += 'selected="selected"';
+				}
+				html += '>'+jQuery(this).text()+'</option>';
+			});
+			html += '</select>';
+
+
+		} else if (fieldtype == 'flag') {
+// checkbox
+			if($this.text()=='1') {
+				html += '<input type="checkbox" checked="checked" ';
+			} else {
+				html += '<input type="checkbox" ';
+			}
+			html += 'name="'+$this.attr('fieldName')+'" id="'+thisID+'" value="1" class="'+addFieldClass+'" />';
+
+
+		} else if (fieldtype == 'flagToggle') {
+// checkbox - toggled
+
+			var v_class	= 'class="inputToggle metadata {target:\''+$this.attr('target')+'\'} '+addFieldClass+'"';
+
+			if($this.text()=='1') {
+				html += '<input type="checkbox" checked="checked" ';
+			} else {
+				html += '<input type="checkbox" ';
+			}
+			html += v_class+' name="'+$this.attr('fieldName')+'" id="'+thisID+'" value="1" />';
+
+
+		} else if (fieldtype == 'toggleRadios') {
+// toggle radiogroup
+			var fieldname = $this.attr('fieldName');
+
+			$this.find('option').each(function(){
+
+				var v_class	= 'class="inputToggle metadata {target:\''+jQuery(this).attr('target')+'\'} '+addFieldClass+'"';
+
+				html += '<div class="check">';
+				html += '<label for="'+thisID+'_'+jQuery(this).attr('id')+'">'+jQuery(this).text()+'</label>';
+				html += '<input type="radio" '+v_class;
+					html += ((jQuery(this).attr('preselect') == 'yes') ? 'checked="checked" ' : ' ');
+					html += 'value="'+jQuery(this).attr('id')+'" ';
+					html += 'name="'+fieldname+'[]" ';
+					html += 'id="'	+thisID+'_'+jQuery(this).attr('id')+'">';
+				html += '</div>';
+			});
+
+
+		} else if (fieldtype == 'radios') {
+// radiogroup
+			var fieldname = $this.attr('fieldName');
+
+			$this.find('option').each(function(){
+				html += '<label class="radio">';
+				//html += '<label for="'+thisID+'_'+jQuery(this).attr('id')+'">'+jQuery(this).text()+'</label>';
+				html += '<input type="radio" ';
+					html += ((jQuery(this).attr('preselect') == 'yes') ? 'checked="checked" ' : ' ');
+					html += 'class="'+addFieldClass+'" ';
+					html += 'value="'+jQuery(this).attr('id')+'" ';
+					html += 'name="'+fieldname+'[]" ';
+					html += 'id="'	+thisID+'_'+jQuery(this).attr('id')+'">';
+				html += jQuery(this).text()+'</label>';
+			});
+
+
+		} else if (fieldtype == 'flags') {
+// multiple checkboxes
+			var fieldname = $this.attr('fieldName');
+
+			$this.find('option').each(function(){
+				html += '<label class="checkbox">';
+				//html += '<label for="'+thisID+'_'+jQuery(this).attr('id')+'">'+jQuery(this).text()+'</label>';
+				html += '<input type="checkbox" ';
+					html += ((jQuery(this).attr('preselect') == 'yes') ? 'checked="checked" ' : ' ');
+					html += 'class="'+addFieldClass+'" ';
+					html += 'value="'+jQuery(this).attr('id')+'" ';
+					html += 'name="'+fieldname+'[]" ';
+					html += 'id="'	+thisID+'_'+jQuery(this).attr('id')+'">';
+				html += jQuery(this).text()+'</label>';
+			});
+
+		} else if (fieldtype == 'longtext') {
+// textarea
+			html += '<textarea id="'+thisID+'" name="'+$this.attr('fieldName')+'" class="textInput '+addFieldClass+'">'+$this.text()+'</textarea>';
+		} else if (fieldtype == 'superlongtext') {
+// textarea - long
+			html += '<textarea id="'+thisID+'" name="'+$this.attr('fieldName')+'" class="textInput superlong '+addFieldClass+'">'+$this.text()+'</textarea>';
+
+		} else if (fieldtype == 'date') {
+// datepicker
+			html += '<input type="text" class="datepick textInput '+addFieldClass+'" id="'+thisID+'" name="'+$this.attr('fieldName')+'" value="'+$this.text()+'" />';
+
+		} else if (fieldtype == 'time') {
+// timepicker
+			html += '<input type="text" class="timepick textInput '+addFieldClass+'" id="'+thisID+'" name="'+$this.attr('fieldName')+'" value="'+$this.text()+'" />';
+
+		} else if (fieldtype == 'datetime') {
+// date / time
+			html += '<input type="text" id="'+thisID+'" class="textInput datetimepick '+addFieldClass+'" name="'+$this.attr('fieldName')+'" value="'+$this.text()+'" />';
+
+		} else if (fieldtype == 'suggest') {
+// suggest
+			html += '<input type="text" name="'+$this.attr('fieldName')+'" id="'+thisID+'" value="'+$this.find('value').text()+'"';
+			if($this.attr('editable') == 'no') {
+				html += ' disabled="disabled"';
+			}
+			html += ' class="textInput inputSuggest '+addFieldClass+'">';
+			var values = '';
+			$this.find('options option').each(function() {
+				values += ((values == '') ? '':'-|-')+jQuery(this).text();
+			});
+			html += '<input type="hidden" value="'+values+'" id="h_'+thisID+'" />';
+
+
+		} else if (fieldtype == 'upload') {
+// upload
+			html += '<input type="file" name="'+$this.attr('fieldName')+'[]" id="'+thisID+'" value="'+$this.find('value').text()+'"';
+			if($this.attr('editable') == 'no') {
+					html += ' disabled="disabled"';
+				}
+			html += ' class="textInput multifile '+addFieldClass+'">';
+
+		} else if (fieldtype == 'password') {
+// password
+			var v_class = ' class="textInput '+addFieldClass + '"';
+
+			html += '<input type="password" name="'+$this.attr('fieldName')+'" id="'+thisID+'" value="'+$this.text()+'"';
+			if($this.attr('editable') == 'no') {
+				html += ' disabled="disabled"';
+			}
+			html += ' '+v_class+' />';
+
+
+
+		} else {
+// text			if (fieldtype == 'text')
+			var v_class = ' class="textInput '+addFieldClass;
+			if(fieldtype == 'decimal') {
+				v_class += ' decimal_'+$this.attr('decimals');
+			}
+			v_class += '"';
+
+			html += '<input type="text" name="'+$this.attr('fieldName')+'" id="'+thisID+'" value="'+$this.text()+'"';
+			if($this.attr('editable') == 'no') {
+				html += ' disabled="disabled"';
+			}
+			html += ' '+v_class+' />';
+
+		}
+
+		if($this.attr('note') != undefined) {
+			html	+= '<span class="help-inline">'+$this.attr('note')+'</span>';
+		}
+		html += '</div></div>';
+
+	}
+	return html;
+}
+
+// parse a datagroup
+function parse_form_datagroup(xml) {
+
+	var $this = jQuery(xml);
+
+	var html = '';
+
+	var closeGridItem = false;
+
+	if($this.attr('cols') != undefined) {
+		var cols = parseInt($this.attr('cols'));
+		if(cols != 0) {
+			closeGridItem = true;
+			html += '<div class="span'+cols+'">';
+		}
+	}
+
+	if($this.attr('title') != undefined) {
+		html += '<fieldset'+(($this.attr('name') != undefined)?' id="'+$this.attr('name')+'"':'')+'>';
+		html += '<legend>'+$this.attr('title')+'</legend>';
+	}
+
+	$this.find('field').each(function(){
+
+		html += parse_form_field(this);
+
+	});
+
+	if(jQuery(this).attr('title') != undefined) {
+		html += '</fieldset>';
+	}
+	if(closeGridItem) {
+		html += '</div>';
+	}
+	return html;
 }
 
 // events for forms

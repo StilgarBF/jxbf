@@ -9,13 +9,17 @@
 			jxbfRoot = '';
 		</script>
 
-		<link rel="stylesheet" href="css/jxbf_core.css?" 	type="text/css" media="screen" />
-		<link rel="stylesheet" href="css/jxbf_print.css?" 	type="text/css" media="print"/>
-		<link rel="stylesheet" href="css/jxbf.css?" 	type="text/css"  media="screen"/>
+		<link rel="stylesheet" href="css/jxbf_core.css" type="text/css" />
 		<link rel="stylesheet" href="css/ui_theme/jquery-ui.custom.css?" type="text/css" />
-		<link rel="stylesheet" href="css/anytime.css?" type="text/css" />
-		<link rel="stylesheet" href="css/site.css?" type="text/css" />
-		<link rel="stylesheet" href="css/fullcalendar.css?" type="text/css" />
+		<link rel="stylesheet" href="css/site.css" type="text/css" />
+		<link rel="stylesheet" href="css/fullcalendar.css" type="text/css" />
+
+		<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+		<style>
+			body {
+				padding-top: 60px;
+			}
+		</style>
 
 		<script type="text/javascript" src="lib/jquery.js"></script>
 		<script type="text/javascript" src="lib/jquery.tools.min.js"></script>
@@ -28,6 +32,8 @@
 		<script type="text/javascript" src="lib/jquery.blockui.js"></script>
 		<script type="text/javascript" src="lib/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="lib/jquery-ui-timepicker-addon.js"></script>
+		
+		<script type="text/javascript" src="lib/bootstrap.min.js"></script>
 
 		<script type="text/javascript" src="jxbf/jxbf_parser.js"></script>
 		<script type="text/javascript" src="jxbf/jxbf.calendar.js"></script>
@@ -45,16 +51,27 @@
 	</head>
 	<body>
 
-		<div id="left_collumn">
-
-			<div id="mainnavigation" class="left_panel">
-				<ul class="navigation">
-					<li>Start</li>
-				</ul>
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container-fluid">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<a class="brand" href="#">jxbf - test</a>
+					<div class="nav-collapse" id="mainnavigation">
+						<ul class="nav">
+							<li class="active"><a href="#">Home</a></li>
+							<li><a href="#about">About</a></li>
+							<li><a href="#contact">Contact</a></li>
+						</ul>
+					</div><!--/.nav-collapse -->
+				</div>
 			</div>
-
 		</div>
-		<div id="main_collumn">
+
+		<div id="main_collumn" class="container-fluid">
 		</div>
 
 		<div class="overlay" id="overlay">
