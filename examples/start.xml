@@ -5,22 +5,25 @@
 			<relation>xml</relation>
 			<href><![CDATA[examples/get.php?action=start]]></href>
 			<title>Start</title>
+			<icon>home</icon>
 		</entry>
 		<entry>
 			<relation>xml</relation>
-            <target>
-                <action><![CDATA[start]]></action>
+			<target>
+				<action><![CDATA[start]]></action>
 				<getData><![CDATA[file=calendar.xml]]></getData>
-            </target>
+			</target>
 			<title>Calendar</title>
+			<icon>calendar</icon>
 		</entry>
 		<entry>
 			<relation>xml</relation>
-            <target>
-                <action><![CDATA[start]]></action>
+			<target>
+				<action><![CDATA[start]]></action>
 				<getData><![CDATA[file=tabs.xml]]></getData>
-            </target>
+			</target>
 			<title>Tabs Kalender, Tabelle</title>
+			<icon>folder-close</icon>
 		</entry>
 		<entry>
 			<relation>xml</relation>
@@ -29,6 +32,7 @@
 				<getData><![CDATA[file=form_elements.xml]]></getData>
 			</target>
 			<title>Formular</title>
+			<icon>pencil</icon>
 		</entry>
 	</mainnavigation>
 	<!--

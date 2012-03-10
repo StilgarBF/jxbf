@@ -117,6 +117,8 @@ function navigation2Object(xml) {
 
 		thisEntry.tooltip	= ((thisXML.children('tooltip').text() != '') ? 	thisXML.children('tooltip').text() : 	false);
 
+		thisEntry.icon  	= ((thisXML.children('icon').text() != '') ?            thisXML.children('icon').text() : 	false);
+
 		thisEntry.multiselect=((thisXML.children('multiselect').length > 0) ? 	thisXML.children('multiselect').find('table').text() : false);
 
 		thisEntry.linkTarget= ((thisXML.children('linktarget').text() != '') ? 	thisXML.children('linktarget').text() : 	false);
@@ -202,6 +204,10 @@ function createNavLevel(navObject, settings) {
 
 			html += '<a rel="'+thisEntry.relation+'" href="'+href+'" class="'+thisClass+'" id="nav_a_'+thisID+'"'+target+'>';
 
+			if(thisEntry.icon) {
+				html += '<i class="icon-'+thisEntry.icon+' icon-white"></i> ';
+			}
+                        
 			if((thisEntry.image != '') && settings.showImage) {
 				var tooltip='';
 				if(thisEntry.tooltip) {
