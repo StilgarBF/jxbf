@@ -40,10 +40,10 @@
 			panel
 		**********************************************
 	-->
-	<panel width="full" title="Projekte">
+	<panel width="full" title="Projekte" height="full">
 		<section>
 			<tabbedpane>
-				<tab title="Tab 1" name="tab_1">
+				<tab title="Tabelle" name="Tabelle">
 					<section>
 						<tabledata>
 							<rownavigation>
@@ -101,10 +101,10 @@
 						</tabledata>
 					</section>
 				</tab>
-				<tab title="Tab 2" name="tab_2">
+				<tab title="Formular" name="Formular">
 					<section>
 						<form name="testform_panel">
-							<datagroup title="testformular_panel" name="datagroup_1_panel" cols="4">
+							<datagroup title="Grid - Spalte 1" name="datagroup_1_panel" cols="4">
 								<field type="datetime"
 										fieldName="datumzeit_1_2"
 										title="Datum Zeitangabe">2011-01-25 10:09</field>
@@ -115,7 +115,7 @@
 										fieldName="datumzeit_3_2"
 										title="Datum"></field>
 							</datagroup>
-							<datagroup title="testformular_panel" name="datagroup_1_panel" cols="4">
+							<datagroup title="Grid - Spalte 2" name="datagroup_1_panel" cols="4">
 								<field type="datetime"
 										fieldName="datumzeit_1_2"
 										title="Datum Zeitangabe">2011-01-25 10:09</field>
@@ -126,7 +126,7 @@
 										fieldName="datumzeit_3_2"
 										title="Datum"></field>
 							</datagroup>
-							<datagroup title="testformular_panel" name="datagroup_1_panel" cols="4">
+							<datagroup title="Grid - Spalte 3" name="datagroup_1_panel" cols="4">
 								<field type="datetime"
 										fieldName="datumzeit_1_2"
 										title="Datum Zeitangabe">2011-01-25 10:09</field>

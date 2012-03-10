@@ -566,11 +566,11 @@ function setPanelHeight() {
 		space_around_panel += parseInt(first_panel_content.siblings('.panel_head').height());
 		space_around_panel += parseInt(jQuery('.panel_inner', first_panel).css('margin-bottom'));
 	}
-
+	
 	var win_height = jQuery(window).height()
-						- ( parseInt(jQuery('body').css('padding-top')) + parseInt(jQuery('body').css('padding-bottom')) )
-						- additionalSpace
-                                                - jQuery('.fl_panel:first').position().top;
+						- jQuery('.fl_panel:first').offset().top
+						- additionalSpace;
+					
 		win_height = parseInt(win_height);
 
 	var win_width = parseInt(jQuery('#main_collumn').width());
